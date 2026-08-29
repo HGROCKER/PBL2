@@ -5,29 +5,7 @@
 
 using namespace std;
 
-const int MAX_RECORD = 1000;
 
-static cauThu dsCauThu[MAX_RECORD];
-static doiBong dsDoiBong[MAX_RECORD];
-static tranDau dsTranDau[MAX_RECORD];
-
-static int soLuongCauThu = 0;
-static int soLuongDoiBong = 0;
-static int soLuongTranDau = 0;
-
-static long long idCauThu = 1;
-static long long idDoiBong = 1;
-static long long idTranDau = 1;
-
-static void nhapChuoi(char* chuoi, int kichThuoc) {
-    cin.ignore(10000, '\n');
-    cin.getline(chuoi, kichThuoc);
-}
-
-static void nhapMaQuocGia(char* ma) {
-    char temp[100];
-
-    cin >> temp;
     strncpy(ma, temp, 3);
     ma[3] = '\0';
 }
