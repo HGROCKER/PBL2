@@ -203,7 +203,6 @@ C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QMenuBar \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QMessageBox \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QPushButton \
-  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QScrollArea \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QSpinBox \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QTabWidget \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QTableWidget \

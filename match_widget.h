@@ -31,7 +31,7 @@ private:
     QSpinBox *goals1Input, *goals2Input;
     QSpinBox *card1Input, *card2Input;
     QPushButton *addBtn, *editBtn, *deleteBtn;
-    
+
     QComboBox *searchTeamCombo;
     QSpinBox *searchMinGoalDiff, *searchMaxGoalDiff;
     QSpinBox *searchMinTotalGoals, *searchMaxTotalGoals;
@@ -41,34 +41,76 @@ private:
 
     void renderMatchRows(const std::vector<tranDau*>& matches) {
         matchTable->setRowCount(0);
-        for (tranDau* match : matches) {
+
+        int totalMatches = matches.size();
+        for (int i = 0; i != totalMatches; ++i) {
+            tranDau* match = matches[i];
             if (!match) continue;
-            
+
             doiBong *team1 = db->getDoiBongById(match->getMaDoiBong1());
             doiBong *team2 = db->getDoiBongById(match->getMaDoiBong2());
-            
+
             int row = matchTable->rowCount();
             matchTable->insertRow(row);
+
+            // Cột 0: ID Trận đấu
             matchTable->setItem(row, 0, new QTableWidgetItem(QString::number(match->getId())));
-            
-            QString tenDoi1 = team1 ? QString::fromStdString(team1->getTen()) : "N/A";
-            QString tenDoi2 = team2 ? QString::fromStdString(team2->getTen()) : "N/A";
-            
-            QString ketQua = QString("%1 %2 - %3 %4")
-                .arg(tenDoi1)
-                .arg(match->getSoBanThangDoi1())
-                .arg(match->getSoBanThangDoi2())
-                .arg(tenDoi2);
-            
-            matchTable->setItem(row, 1, new QTableWidgetItem(ketQua));
-            matchTable->setItem(row, 2, new QTableWidgetItem(QString::number(match->getSoTheVangDoi1())));
-            matchTable->setItem(row, 3, new QTableWidgetItem(QString::number(match->getSoTheVangDoi2())));
-            
+
+            QString name1 = team1 ? QString::fromStdString(team1->getTen()).toUpper() : "N/A";
+            QString name2 = team2 ? QString::fromStdString(team2->getTen()).toUpper() : "N/A";
+
+            int score1 = match->getSoBanThangDoi1();
+            int score2 = match->getSoBanThangDoi2();
+
+            QTableWidgetItem *itemTeam1 = new QTableWidgetItem(name1);
+            QTableWidgetItem *itemScore = new QTableWidgetItem(QString("  %1  -  %2  ").arg(score1).arg(score2));
+            QTableWidgetItem *itemTeam2 = new QTableWidgetItem(name2);
+            QTableWidgetItem *itemWinner = new QTableWidgetItem("");
+
+            // Cấu hình font chữ TRẮNG ĐẬM
+            QFont boldFont("Arial", 9, QFont::Bold);
+
+            // ✅ FIX CHUẨN QT6: Thay thế setTextColor() bằng setForeground(QBrush(Qt::white))
+            itemTeam1->setFont(boldFont); itemTeam1->setForeground(QBrush(Qt::white)); itemTeam1->setTextAlignment(Qt::AlignCenter);
+            itemScore->setFont(boldFont); itemScore->setForeground(QBrush(Qt::white)); itemScore->setTextAlignment(Qt::AlignCenter);
+            itemTeam2->setFont(boldFont); itemTeam2->setForeground(QBrush(Qt::white)); itemTeam2->setTextAlignment(Qt::AlignCenter);
+            itemWinner->setFont(boldFont); itemWinner->setForeground(QBrush(Qt::white)); itemWinner->setTextAlignment(Qt::AlignCenter);
+
+            // TỰ ĐỘNG PHÂN TÍCH KẾT QUẢ VÀ NHUỘM MÀU KHUNG CHIẾN THẮNG
+            if (score1 > score2) {
+                itemTeam1->setBackground(QBrush(QColor("#D32F2F"))); // Đội 1 thắng: Khung ĐỎ rực lửa
+                itemTeam2->setBackground(QBrush(QColor("#000000"))); // Đội 2 thua: Khung ĐEN huyền bí
+                itemWinner->setText(QString("👑 %1 THẮNG").arg(name1));
+            } else if (score2 > score1) {
+                itemTeam1->setBackground(QBrush(QColor("#000000"))); // Đội 1 thua: Khung ĐEN
+                itemTeam2->setBackground(QBrush(QColor("#D32F2F"))); // Đội 2 thắng: Khung ĐỎ
+                itemWinner->setText(QString("👑 %1 THẮNG").arg(name2));
+            } else {
+                itemTeam1->setBackground(QBrush(QColor("#000000"))); // Hòa: Cả 2 khung màu ĐEN
+                itemTeam2->setBackground(QBrush(QColor("#000000")));
+                itemWinner->setText("🤝 HÒA NHAU");
+            }
+
+            // Nạp các khung tương ứng vào các cột trên bảng dữ liệu
+            matchTable->setItem(row, 1, itemTeam1);
+            matchTable->setItem(row, 2, itemScore);
+            matchTable->setItem(row, 3, itemTeam2);
+            matchTable->setItem(row, 4, itemWinner);
+
+            // Thống kê Thẻ vàng & Ngày thi đấu
+            matchTable->setItem(row, 5, new QTableWidgetItem(QString::number(match->getSoTheVangDoi1())));
+            matchTable->setItem(row, 6, new QTableWidgetItem(QString::number(match->getSoTheVangDoi2())));
+
             QDateTime dateTime;
             dateTime.setSecsSinceEpoch(match->getNgayThiDau());
-            matchTable->setItem(row, 4, new QTableWidgetItem(dateTime.toString("dd/MM/yyyy HH:mm")));
+            matchTable->setItem(row, 7, new QTableWidgetItem(dateTime.toString("dd/MM/yyyy HH:mm")));
         }
+
+        // Cân chỉnh độ rộng cột tự động để không bao giờ dính lỗi che chữ
+        matchTable->resizeColumnsToContents();
     }
+
+
 
 public slots:
     void onAddMatch() {
@@ -147,30 +189,106 @@ public slots:
         refreshTable();
         statusLabel->setText("✓ Đã reset bộ lọc!");
     }
-
     void onTableClicked(int row, int column) {
         if (row < 0) return;
         selectedMatchId = matchTable->item(row, 0)->text().toLongLong();
         tranDau *match = db->getTranDauById(selectedMatchId);
-        if (match) {
-            for (int i = 0; i < team1Combo->count(); i++) {
-                if (team1Combo->itemData(i).toInt() == match->getMaDoiBong1()) {
-                    team1Combo->setCurrentIndex(i);
-                    break;
+        if (!match) return;
+
+        // 1. Cập nhật ngược dữ liệu lên các SpinBox của Form chỉnh sửa
+        goals1Input->setValue(match->getSoBanThangDoi1());
+        goals2Input->setValue(match->getSoBanThangDoi2());
+        card1Input->setValue(match->getSoTheVangDoi1());
+        card2Input->setValue(match->getSoTheVangDoi2());
+
+        // 2. Lấy thông tin thực thể 2 đội bóng
+        doiBong *team1 = db->getDoiBongById(match->getMaDoiBong1());
+        doiBong *team2 = db->getDoiBongById(match->getMaDoiBong2());
+        QString name1 = team1 ? QString::fromStdString(team1->getTen()).toUpper() : "N/A";
+        QString name2 = team2 ? QString::fromStdString(team2->getTen()).toUpper() : "N/A";
+
+        QDateTime dateTime;
+        dateTime.setSecsSinceEpoch(match->getNgayThiDau());
+
+        // 3. Xây dựng giao diện báo cáo chi tiết trận đấu (Tô đậm nhãn thông tin + Bo viền nghệ thuật)
+        QString detail = QString(
+                             "┌──────────────────────────────────────────────────┐\n"
+                             " 🔥  CHI TIẾT DIỄN BIẾN TRẬN ĐẤU KINH ĐIỂN  🔥\n"
+                             "└──────────────────────────────────────────────────┘\n\n"
+                             "⏰  [THỜI GIAN]:\t%1\n"
+                             "🏟️  [SÂN VẬN ĐỘNG]:\t%2\n\n"
+                             "⚔️  [ĐỘI HÌNH ĐỐI ĐẦU]:\n"
+                             "    ▶️  【%3】   VS   【%4】\n\n"
+                             "📊  [KẾT QUẢ TỈ SỐ THỰC TẾ]:\n"
+                             "    ⚽  %5   [ %6 ]  -  [ %7 ]   %8\n\n"
+                             "🟨  [THỐNG KÊ THẺ VÀNG]:\n"
+                             "    🔸 %9 (Thẻ) \t│\t 🔸 %10 (Thẻ)\n"
+                             "────────────────────────────────────────────────────\n"
+                             "💡 Mẹo: Bạn có muốn xem nhanh danh sách đội hình thi đấu của 2 đội này?"
+                             ).arg(dateTime.toString("dd/MM/yyyy HH:mm"))
+                             .arg(match->getSanVanDong().empty() ? "Sân vận động Quốc gia" : QString::fromStdString(match->getSanVanDong()))
+                             .arg(name1).arg(name2)
+                             .arg(name1).arg(match->getSoBanThangDoi1()).arg(match->getSoBanThangDoi2()).arg(name2)
+                             .arg(match->getSoTheVangDoi1()).arg(match->getSoTheVangDoi2());
+
+        // 4. Tạo Layer liên kết tương tác: Cho phép người dùng bấm nút để chuyển tiếp xem chi tiết Đội bóng
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("🎮 Chi Tiết Trận Đấu & Liên Kết Đội Hình");
+        msgBox.setText(detail);
+        msgBox.setIcon(QMessageBox::Information);
+
+        QPushButton *viewTeam1Btn = msgBox.addButton(QString("👥 Xem CLB %1").arg(name1), QMessageBox::ActionRole);
+        QPushButton *viewTeam2Btn = msgBox.addButton(QString("👥 Xem CLB %2").arg(name2), QMessageBox::ActionRole);
+        QPushButton *closeBtn = msgBox.addButton("❌ Đóng lại", QMessageBox::RejectRole);
+
+        msgBox.exec();
+
+        // 5. Nếu người dùng nhấn chọn xem Đội 1 hoặc Đội 2 -> Tự động kích hoạt hiển thị Layer Profile Đội bóng
+        doiBong* selectedTeam = nullptr;
+        if (msgBox.clickedButton() == viewTeam1Btn) selectedTeam = team1;
+        else if (msgBox.clickedButton() == viewTeam2Btn) selectedTeam = team2;
+
+        if (selectedTeam != nullptr) {
+            // Tái sử dụng mảng chỉ mục phụ (Secondary Index) để quét nhanh danh sách cầu thủ của đội đã chọn
+            plb2::PlayerSearchFilter filter;
+            filter.teamId = selectedTeam->getId();
+            auto members = plb2::filterPlayers(*db, filter);
+
+            QString memberListStr = "";
+            int totalMembers = members.size();
+            for (int i = 0; i != totalMembers; ++i) {
+                cauThu* ct = members[i];
+                if (ct) {
+                    memberListStr += QString("   │   • [%1] %2 (%3)\n")
+                                         .arg(ct->getSoAo())
+                                         .arg(QString::fromStdString(ct->getTen()).toUpper())
+                                         .arg(QString::fromStdString(ct->getViTri()).toUpper());
                 }
             }
-            for (int i = 0; i < team2Combo->count(); i++) {
-                if (team2Combo->itemData(i).toInt() == match->getMaDoiBong2()) {
-                    team2Combo->setCurrentIndex(i);
-                    break;
-                }
-            }
-            goals1Input->setValue(match->getSoBanThangDoi1());
-            goals2Input->setValue(match->getSoBanThangDoi2());
-            card1Input->setValue(match->getSoTheVangDoi1());
-            card2Input->setValue(match->getSoTheVangDoi2());
+
+            QString teamDetail = QString(
+                                     "┌──────────────────────────────────────────────────┐\n"
+                                     " ⚽  HỒ SƠ CHI TIẾT ĐỘI BÓNG CHỦ QUẢN  ⚽\n"
+                                     "└──────────────────────────────────────────────────┘\n\n"
+                                     "🏢  [CÂU LẠC BỘ]:\t【%1】\n"
+                                     "👨‍💼  [GEAR / HLV]:\t【%2】\n"
+                                     "📍  [ĐỊA PHƯƠNG]:\t【%3】\n"
+                                     "📈  [ĐIỂM XẾP HẠNG]:\t【%4 ĐIỂM】\n\n"
+                                     "👥  [DANH SÁCH ĐỘI HÌNH ĐĂNG KÝ — %5 CHIẾN BINH]:\n"
+                                     "┌──────────────────────────────────────────────────┐\n"
+                                     "%6"
+                                     "└──────────────────────────────────────────────────┘"
+                                     ).arg(QString::fromStdString(selectedTeam->getTen()).toUpper())
+                                     .arg(QString::fromStdString(selectedTeam->getHLV()).toUpper())
+                                     .arg(QString::fromStdString(selectedTeam->getDiaPhuong()).toUpper())
+                                     .arg(selectedTeam->getDiemXepHang())
+                                     .arg(totalMembers)
+                                     .arg(memberListStr.isEmpty() ? "   │   (Chưa đăng ký cầu thủ)\n" : memberListStr);
+
+            QMessageBox::information(this, "⚽ Thông Tin Đội Hình Chi Tiết", teamDetail);
         }
     }
+
 
 public:
     MatchWidget(Database *db, QWidget *parent = nullptr)
@@ -279,13 +397,20 @@ public:
         mainLayout->addWidget(searchGroup);
 
         // === TABLE ===
+        // === CẤU TRÚC LẠI BẢNG TÁCH BIỆT KHUNG ĐỒ HỌA ===
         matchTable = new QTableWidget();
-        matchTable->setColumnCount(5);
-        matchTable->setHorizontalHeaderLabels({"ID", "Kết Quả", "Thẻ Vàng Đội 1", "Thẻ Vàng Đội 2", "Ngày Thi Đấu"});
+        matchTable->setColumnCount(8); // Tăng lên 8 cột để chia nhỏ khung
+        matchTable->setHorizontalHeaderLabels({
+            "ID", "⚔️ KHUNG ĐỘI 1", "📊 TỈ SỐ", "⚔️ KHUNG ĐỘI 2",
+            "🏆 KẾT QUẢ", "🟨 THẺ V1", "🟨 THẺ V2", "📅 NGÀY THI ĐẤU"
+        });
         matchTable->horizontalHeader()->setStretchLastSection(true);
+        matchTable->setSelectionBehavior(QAbstractItemView::SelectRows);
         matchTable->setStyleSheet(
             "QHeaderView::section { background-color: #F57C00; color: white; padding: 5px; font-weight: bold; }"
-        );
+            "QTableWidget { gridline-color: #ccc; background-color: #222222; }" // Nền tối làm nổi bật khung Đỏ/Đen
+            );
+
         mainLayout->addWidget(matchTable);
 
         statusLabel = new QLabel("✓ Sẵn sàng");

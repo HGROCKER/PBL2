@@ -466,11 +466,10 @@ CMakeFiles/PLB2.dir/PLB2_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.11.2/mingw_64/include/QtCore/q20algorithm.h \
  C:\Users\PC\Downloads\webnew\PLB2\build\Desktop_Qt_6_11_2_MinGW_64_bit_Debug\PLB2_autogen\EWIEGA46WW/moc_tournament_widget.cpp \
  C:/Users/PC/Downloads/webnew/PLB2/tournament_widget.h \
- C:/Qt/6.11.2/mingw_64/include/QtWidgets/QScrollArea \
- C:/Qt/6.11.2/mingw_64/include/QtWidgets/qscrollarea.h \
  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsView \
  C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgraphicsview.h \
  C:/Qt/6.11.2/mingw_64/include/QtGui/qpainter.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/qscrollarea.h \
  C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgraphicsscene.h \
  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsScene \
  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsRectItem \

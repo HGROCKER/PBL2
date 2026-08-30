@@ -41,21 +41,12 @@ template <> constexpr inline auto TournamentWidget::qt_create_metaobjectdata<qt_
     QtMocHelpers::StringRefStorage qt_stringData {
         "TournamentWidget",
         "onGenerateBracket",
-        "",
-        "onZoomChanged",
-        "value",
-        "onAddRound"
+        ""
     };
 
     QtMocHelpers::UintData qt_methods {
         // Slot 'onGenerateBracket'
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'onZoomChanged'
-        QtMocHelpers::SlotData<void(int)>(3, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 4 },
-        }}),
-        // Slot 'onAddRound'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -80,11 +71,10 @@ void TournamentWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->onGenerateBracket(); break;
-        case 1: _t->onZoomChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
-        case 2: _t->onAddRound(); break;
         default: ;
         }
     }
+    (void)_a;
 }
 
 const QMetaObject *TournamentWidget::metaObject() const
@@ -106,14 +96,14 @@ int TournamentWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 1)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 1;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 1)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 1;
     }
     return _id;
 }

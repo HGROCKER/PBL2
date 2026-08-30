@@ -178,20 +178,43 @@ public slots:
         if (row < 0) return;
         selectedPlayerId = playerTable->item(row, 0)->text().toLongLong();
         cauThu *ct = db->getCauThuById(selectedPlayerId);
-        if (ct) {
-            nameInput->setText(QString::fromStdString(ct->getTen()));
-            positionInput->setText(QString::fromStdString(ct->getViTri()));
-            ageInput->setValue(ct->getTuoi());
-            numberInput->setValue(ct->getSoAo());
-            goalsInput->setValue(ct->getSoBanThang());
-            for (int i = 0; i < teamCombo->count(); i++) {
-                if (teamCombo->itemData(i).toInt() == ct->getMaDoiBong()) {
-                    teamCombo->setCurrentIndex(i);
-                    break;
-                }
-            }
-        }
+        if (!ct) return;
+
+        // Đồng bộ lên Form nhập liệu
+        nameInput->setText(QString::fromStdString(ct->getTen()));
+        positionInput->setText(QString::fromStdString(ct->getViTri()));
+        ageInput->setValue(ct->getTuoi());
+        numberInput->setValue(ct->getSoAo());
+        goalsInput->setValue(ct->getSoBanThang());
+
+        // LAYER ĐỔ BÓNG BO VIỀN HỒ SƠ CẦU THỦ
+        doiBong *team = db->getDoiBongById(ct->getMaDoiBong());
+        QString detail = QString(
+                             "┌──────────────────────────────────────────────────┐\n"
+                             " 🏆   HỒ SƠ THÔNG TIN CẦU THỦ CHUYÊN NGHIỆP   🏆\n"
+                             "└──────────────────────────────────────────────────┘\n\n"
+                             "🆔  [MÃ ĐỊNH DANH - ID]:\t【 %1 】\n"
+                             "👤  [HỌ VÀ TÊN]:\t\t【 %2 】\n"
+                             "🏃  [VỊ TRÍ CHIẾN THUẬT]:\t【 %3 】\n"
+                             "🎂  [TUỔI ĐỜI]:\t\t【 %4 TUỔI 】\n"
+                             "🔢  [SỐ ÁO THI ĐẤU]:\t\t【 SỐ %5 】\n"
+                             "⚽  [TỔNG BÀN THẮNG]:\t【 %6 BÀN 】\n"
+                             "🏢  [CLB CHỦ QUẢN]:\t\t【 %7 】\n"
+                             "🇻🇳  [QUỐC TỊCH]:\t\t【 VIỆT NAM 】\n"
+                             "────────────────────────────────────────────────────"
+                             ).arg(ct->getId())
+                             .arg(QString::fromStdString(ct->getTen()).toUpper())
+                             .arg(QString::fromStdString(ct->getViTri()).toUpper())
+                             .arg(ct->getTuoi())
+                             .arg(ct->getSoAo())
+                             .arg(ct->getSoBanThang())
+                             .arg(team ? QString::fromStdString(team->getTen()).toUpper() : "CẦU THỦ TỰ DO");
+
+        QMessageBox::information(this, "👤 PROFILE CẦU THỦ CHI TIẾT", detail);
     }
+
+
+
 
 public:
     PlayerWidget(Database *db, QWidget *parent = nullptr) 
@@ -472,13 +495,55 @@ public slots:
         if (row < 0) return;
         selectedTeamId = teamTable->item(row, 0)->text().toLongLong();
         doiBong *team = db->getDoiBongById(selectedTeamId);
-        if (team) {
-            nameInput->setText(QString::fromStdString(team->getTen()));
-            coachInput->setText(QString::fromStdString(team->getHLV()));
-            locationInput->setText(QString::fromStdString(team->getDiaPhuong()));
-            rankInput->setValue(team->getDiemXepHang());
+        if (!team) return;
+
+        // Đồng bộ ngược lên Form nhập liệu của đội bóng
+        nameInput->setText(QString::fromStdString(team->getTen()));
+        coachInput->setText(QString::fromStdString(team->getHLV()));
+        locationInput->setText(QString::fromStdString(team->getDiaPhuong()));
+        rankInput->setValue(team->getDiemXepHang());
+
+        // Vận dụng mảng chỉ mục phụ Secondary Index quét nhanh thành viên
+        plb2::PlayerSearchFilter filter;
+        filter.teamId = team->getId();
+        auto members = plb2::filterPlayers(*db, filter);
+
+        QString memberListStr = "";
+        int totalMembers = members.size();
+        for (int i = 0; i != totalMembers; ++i) {
+            cauThu* ct = members[i];
+            if (ct) {
+                memberListStr += QString("   │   • [%1] %2 (%3)\n")
+                                     .arg(ct->getSoAo())
+                                     .arg(QString::fromStdString(ct->getTen()).toUpper())
+                                     .arg(QString::fromStdString(ct->getViTri()).toUpper());
+            }
         }
+
+        // LAYER ĐỔ BÓNG BO VIỀN BÁO CÁO ĐỘI BÓNG
+        QString detail = QString(
+                             "┌──────────────────────────────────────────────────┐\n"
+                             " ⚽   BÁO CÁO THÔNG TIN CHI TIẾT ĐỘI BÓNG   ⚽\n"
+                             "└──────────────────────────────────────────────────┘\n\n"
+                             "🏢  [CÂU LẠC BỘ]:\t【 %1 】\n"
+                             "👨‍💼  [HUẤN LUYỆN VIÊN]:\t【 %2 】\n"
+                             "📍  [ĐỊA PHƯƠNG]:\t【 %3 】\n"
+                             "📈  [ĐIỂM XẾP HẠNG]:\t【 %4 ĐIỂM 】\n\n"
+                             "👥  [DANH SÁCH ĐỘI HÌNH ĐĂNG KÝ — %5 CẦU THỦ]:\n"
+                             "┌──────────────────────────────────────────────────┐\n"
+                             "%6"
+                             "└──────────────────────────────────────────────────┘"
+                             ).arg(QString::fromStdString(team->getTen()).toUpper())
+                             .arg(QString::fromStdString(team->getHLV()).toUpper())
+                             .arg(QString::fromStdString(team->getDiaPhuong()).toUpper())
+                             .arg(team->getDiemXepHang())
+                             .arg(totalMembers)
+                             .arg(memberListStr.isEmpty() ? "   │   (Chưa đăng ký cầu thủ thành viên)\n" : memberListStr);
+
+        QMessageBox::information(this, "⚽ CHI TIẾT CÂU LẠC BỘ", detail);
     }
+
+
 
 public:
     TeamWidget(Database *db, QWidget *parent = nullptr) 
@@ -658,42 +723,48 @@ private:
     }
 
     void loadSampleData() {
-        doiBong db1(1, "Manchester United", "Erik ten Hag", "Manchester");
-        doiBong db2(2, "Liverpool", "Jurgen Klopp", "Liverpool");
-        doiBong db3(3, "Arsenal", "Mikel Arteta", "London");
-        doiBong db4(4, "Chelsea", "Mauricio Pochettino", "London");
+        // 1. Khởi tạo 8 đội bóng tham dự giải đấu
+        std::vector<std::pair<std::string, std::string>> teamTemplates = {
+            {"Manchester United", "Manchester"}, {"Liverpool", "Liverpool"},
+            {"Arsenal", "London"}, {"Chelsea", "London"},
+            {"Manchester City", "Manchester"}, {"Real Madrid", "Madrid"},
+            {"Barcelona", "Barcelona"}, {"Bayern Munich", "Munich"}
+        };
 
-        db.insert_doiBong_single(db1);
-        db.insert_doiBong_single(db2);
-        db.insert_doiBong_single(db3);
-        db.insert_doiBong_single(db4);
+        for (int i = 0; i < 8; ++i) {
+            doiBong team(i + 1, teamTemplates[i].first.c_str(), "HLV Chuyên Nghiệp", teamTemplates[i].second.c_str());
+            team.setDiemXepHang(0);
+            db.insert_doiBong_single(team);
+        }
 
-        cauThu ct1(1, "Cristiano Ronaldo", "ST", 39, 7, 1);
-        cauThu ct2(2, "Harry Maguire", "CB", 31, 6, 1);
-        cauThu ct3(3, "Bruno Fernandes", "CM", 29, 8, 1);
-        cauThu ct4(4, "Mohamed Salah", "RW", 32, 11, 2);
-        cauThu ct5(5, "Virgil van Dijk", "CB", 32, 4, 2);
-        cauThu ct6(6, "Bukayo Saka", "LW", 23, 7, 3);
-        cauThu ct7(7, "Martin Odegaard", "CM", 25, 8, 3);
-        cauThu ct8(8, "Cole Palmer", "RW", 22, 20, 4);
+        // 2. Tự động bơm 11 cầu thủ đúng vị trí chiến thuật cho mỗi đội (Tổng cộng 88 cầu thủ)
+        std::vector<std::string> positions = {"GK", "LB", "CB", "CB", "RB", "CM", "CM", "AM", "LW", "RW", "ST"};
+        int playerGlobalId = 1;
 
-        db.insert_cauThu_single(ct1);
-        db.insert_cauThu_single(ct2);
-        db.insert_cauThu_single(ct3);
-        db.insert_cauThu_single(ct4);
-        db.insert_cauThu_single(ct5);
-        db.insert_cauThu_single(ct6);
-        db.insert_cauThu_single(ct7);
-        db.insert_cauThu_single(ct8);
+        for (int teamId = 1; teamId <= 8; ++teamId) {
+            doiBong* t = db.getDoiBongById(teamId);
+            std::string teamName = t ? t->getTen() : "Team";
 
-        tranDau td1(1, 1, 2, 2, 2, 1704067200, 1, 0);
-        tranDau td2(2, 3, 4, 3, 1, 1704153600, 0, 1);
-        tranDau td3(3, 1, 3, 1, 1, 1704240000, 0, 0);
+            for (size_t p = 0; p < positions.size(); ++p) {
+                std::string pName = teamName + " Player " + std::to_string(p + 1);
+                int randomAge = 18 + (playerGlobalId % 15);  // Tuổi từ 18 - 32
+                int shirtNumber = (p == 0) ? 1 : (int)(p + 1 + (playerGlobalId % 3)); // Số áo hợp lệ
 
+                cauThu ct(playerGlobalId, pName.c_str(), positions[p].c_str(), randomAge, shirtNumber, teamId);
+                ct.setSoBanThang(playerGlobalId % 5); // Tạo ngẫu nhiên vài bàn thắng mẫu
+                db.insert_cauThu_single(ct);
+
+                playerGlobalId++;
+            }
+        }
+
+        // 3. Khởi tạo sẵn một vài trận đấu lịch sử làm tiền đề dữ liệu
+        tranDau td1(1, 1, 2, 2, 1, 1704067200, 1, 2); // MU thắng Liverpool 2-1
+        tranDau td2(2, 3, 4, 0, 3, 1704153600, 2, 1); // Chelsea thắng Arsenal 3-0
         db.insert_tranDau_single(td1);
         db.insert_tranDau_single(td2);
-        db.insert_tranDau_single(td3);
     }
+
 
 private slots:
     void onLoadSampleData() {
@@ -708,8 +779,8 @@ private slots:
         loadSampleData();
         playerWidget->refreshTable();
         teamWidget->refreshTable();
-        statusLabel->setText("✓ Đã tải lại dữ liệu | Cầu thủ: " + 
-                            QString::number(db.getCauThuCount()) + 
+        statusLabel->setText("✓ Đã tải lại dữ liệu | Cầu thủ: " +
+                            QString::number(db.getCauThuCount()) +
                             " | Đội: " + QString::number(db.getDoiBongCount()));
         QMessageBox::information(this, "✓", "Đã tải dữ liệu mẫu!");
     }
