@@ -164,6 +164,8 @@ C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB
   C:/Qt/6.11.2/mingw_64/include/QtGui/qinputmethod.h \
   C:/Qt/6.11.2/mingw_64/include/QtGui/qkeysequence.h \
   C:/Qt/6.11.2/mingw_64/include/QtGui/qpaintdevice.h \
+  C:/Qt/6.11.2/mingw_64/include/QtGui/qpainter.h \
+  C:/Qt/6.11.2/mingw_64/include/QtGui/qpainterpath.h \
   C:/Qt/6.11.2/mingw_64/include/QtGui/qpalette.h \
   C:/Qt/6.11.2/mingw_64/include/QtGui/qpen.h \
   C:/Qt/6.11.2/mingw_64/include/QtGui/qpicture.h \
@@ -186,6 +188,10 @@ C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB
   C:/Qt/6.11.2/mingw_64/include/QtGui/qwindowdefs_win.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QApplication \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QComboBox \
+  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsRectItem \
+  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsScene \
+  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsTextItem \
+  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsView \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGridLayout \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGroupBox \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QHBoxLayout \
@@ -197,6 +203,7 @@ C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QMenuBar \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QMessageBox \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QPushButton \
+  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QScrollArea \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QSpinBox \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QTabWidget \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/QTableWidget \
@@ -215,6 +222,9 @@ C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qdialog.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qframe.h \
+  C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgraphicsitem.h \
+  C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgraphicsscene.h \
+  C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgraphicsview.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgridlayout.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgroupbox.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qheaderview.h \
@@ -228,6 +238,7 @@ C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qmessagebox.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qpushbutton.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qrubberband.h \
+  C:/Qt/6.11.2/mingw_64/include/QtWidgets/qscrollarea.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qsizepolicy.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qslider.h \
   C:/Qt/6.11.2/mingw_64/include/QtWidgets/qspinbox.h \
@@ -470,5 +481,7 @@ C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
   C:/Users/PC/Downloads/webnew/PLB2/csdl.h \
   C:/Users/PC/Downloads/webnew/PLB2/database.h \
+  C:/Users/PC/Downloads/webnew/PLB2/match_widget.h \
   C:/Users/PC/Downloads/webnew/PLB2/search_features.h \
+  C:/Users/PC/Downloads/webnew/PLB2/tournament_widget.h \
   C:/Users/PC/Downloads/webnew/PLB2/vector.h

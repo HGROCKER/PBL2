@@ -482,6 +482,19 @@ CMakeFiles/PLB2.dir/main.cpp.obj: \
  C:\Users\PC\Downloads\webnew\PLB2\csdl.h \
  C:\Users\PC\Downloads\webnew\PLB2\database.h \
  C:\Users\PC\Downloads\webnew\PLB2\search_features.h \
+ C:\Users\PC\Downloads\webnew\PLB2\match_widget.h \
+ C:\Users\PC\Downloads\webnew\PLB2\tournament_widget.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QScrollArea \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/qscrollarea.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsView \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgraphicsview.h \
+ C:/Qt/6.11.2/mingw_64/include/QtGui/qpainter.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgraphicsscene.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsScene \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsRectItem \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgraphicsitem.h \
+ C:/Qt/6.11.2/mingw_64/include/QtGui/qpainterpath.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsTextItem \
  C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB2_autogen/include/main.moc \
  C:/Qt/6.11.2/mingw_64/include/QtCore/qtmochelpers.h \
  C:/Qt/6.11.2/mingw_64/include/QtCore/qtmocconstants.h \

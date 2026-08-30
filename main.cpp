@@ -29,6 +29,8 @@
 #include "csdl.h"
 #include "database.h"
 #include "search_features.h"
+#include "match_widget.h"
+#include "tournament_widget.h"
 
 using namespace std;
 
@@ -602,6 +604,8 @@ private:
     Database db;
     PlayerWidget *playerWidget;
     TeamWidget *teamWidget;
+    MatchWidget *matchWidget;
+    TournamentWidget *tournamentWidget;
     QLabel *statusLabel;
 
 public:
@@ -624,9 +628,13 @@ public:
         QTabWidget *tabWidget = new QTabWidget();
         playerWidget = new PlayerWidget(&db);
         teamWidget = new TeamWidget(&db);
+        matchWidget = new MatchWidget(&db);
+        tournamentWidget = new TournamentWidget(&db);
 
         tabWidget->addTab(playerWidget, "👥 Cầu Thủ");
         tabWidget->addTab(teamWidget, "⚽ Đội Bóng");
+        tabWidget->addTab(matchWidget, "🎮 Trận Đấu");
+        tabWidget->addTab(tournamentWidget, "🏆 Vòng Bảng");
 
         mainLayout->addWidget(tabWidget);
         setCentralWidget(centralWidget);

@@ -366,9 +366,21 @@
 			null
 		],
 		[
+			"C:/Users/PC/Downloads/webnew/PLB2/match_widget.h",
+			"MU",
+			"EWIEGA46WW/moc_match_widget.cpp",
+			null
+		],
+		[
 			"C:/Users/PC/Downloads/webnew/PLB2/search_features.h",
 			"MU",
 			"EWIEGA46WW/moc_search_features.cpp",
+			null
+		],
+		[
+			"C:/Users/PC/Downloads/webnew/PLB2/tournament_widget.h",
+			"MU",
+			"EWIEGA46WW/moc_tournament_widget.cpp",
 			null
 		],
 		[

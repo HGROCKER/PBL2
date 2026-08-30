@@ -67,9 +67,10 @@ int findIndexPosition(MyVector<SecondaryIndex<K>>& idxVec, K key, long long enti
     return -1;
 }
 
+// Thêm inline vào trước kiểu trả về int của hàm chuyên biệt hóa
 template <>
-int findIndexPosition<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec, 
-                                   const char* key, long long entityId) {
+inline int findIndexPosition<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec,
+                                           const char* key, long long entityId) {
     for (int i = 0; i < idxVec.size(); i++) {
         if (std::strcmp(idxVec[i].key, key) == 0 && idxVec[i].entityId == entityId) {
             return i;
@@ -95,10 +96,10 @@ int findFirstIndex(MyVector<SecondaryIndex<K>>& idxVec, K target) {
     }
     return result;
 }
-
+// Thêm inline vào trước kiểu trả về int của hàm chuyên biệt hóa
 template <>
-int findFirstIndex<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec, 
-                                const char* target) {
+inline int findFirstIndex<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec,
+                                        const char* target) {
     int low = 0, high = idxVec.size() - 1;
     int result = -1;
     while (low <= high) {
@@ -115,6 +116,7 @@ int findFirstIndex<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec,
     }
     return result;
 }
+
 
 // ==================== DATABASE CLASS ====================
 class Database {
@@ -135,7 +137,7 @@ public:
         dbCauThu.insert_ordered(ct);
         indexCauThuTuoi.push_back({ct.getTuoi(), ct.id});
         indexCauThuMaDoiBong.push_back({ct.getMaDoiBong(), ct.id});
-        
+
         if (indexCauThuTuoi.size() > 0) {
             IndexSorter<int>::sortNumeric(indexCauThuTuoi, 0, indexCauThuTuoi.size() - 1);
             IndexSorter<int>::sortNumeric(indexCauThuMaDoiBong, 0, indexCauThuMaDoiBong.size() - 1);
@@ -172,15 +174,23 @@ public:
         cauThu* ct = dbCauThu.find_by_id(id);
         if (ct) ct->setSoBanThang(soBanThangMoi);
     }
-
-    // ✅ INSERT DOI BONG
     void insert_doiBong_single(const doiBong& db) {
         dbDoiBong.insert_ordered(db);
-        indexDoiBongDiaPhuong.push_back({db.getDiaPhuong(), db.id});
+
+        // Tạo một biến static/hoặc lấy vùng nhớ cố định từ mảng chính vừa insert
+        doiBong* permanentTeam = dbDoiBong.find_by_id(db.id);
+        if (permanentTeam) {
+            SecondaryIndex<const char*> item;
+            item.key = permanentTeam->getDiaPhuong().c_str();
+            item.entityId = permanentTeam->id;
+            indexDoiBongDiaPhuong.push_back(item);
+        }
+
         if (indexDoiBongDiaPhuong.size() > 0) {
             IndexSorter<const char*>::sortNumeric(indexDoiBongDiaPhuong, 0, indexDoiBongDiaPhuong.size() - 1);
         }
     }
+
 
     void updateDoiBongDiemXepHang(long long id, int diemMoi) {
         doiBong* db = dbDoiBong.find_by_id(id);
