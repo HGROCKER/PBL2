@@ -1,386 +1,102 @@
-#include "csdl.h"
-#include <iostream>
+#include "CSDL.h"
 #include <cstring>
-#include <iomanip>
+#include <iostream>
 
-using namespace std;
-
-const int MAX_RECORD = 1000;
-
-static cauThu dsCauThu[MAX_RECORD];
-static doiBong dsDoiBong[MAX_RECORD];
-static tranDau dsTranDau[MAX_RECORD];
-
-static int soLuongCauThu = 0;
-static int soLuongDoiBong = 0;
-static int soLuongTranDau = 0;
-
-static long long idCauThu = 1;
-static long long idDoiBong = 1;
-static long long idTranDau = 1;
-
-static void nhapChuoi(char* chuoi, int kichThuoc) {
-    cin.ignore(10000, '\n');
-    cin.getline(chuoi, kichThuoc);
+// ==================== CAU THU ====================
+cauThu::cauThu() {
+    id = 0; tuoi = 0; soAo = 0; soBanThang = 0; maDoiBong = 0; soTranChoi = 0; sdt = 0;
+    ptrDoiBong = nullptr; ngaySinh = 0;
+    ten[0] = '\0'; viTri[0] = '\0'; maQuocGia[0] = '\0';
 }
 
-static void nhapMaQuocGia(char* ma) {
-    char temp[100];
-
-    cin >> temp;
-    strncpy(ma, temp, 3);
-    ma[3] = '\0';
+cauThu::cauThu(long long _id, const char* _ten, const char* _viTri, int _tuoi, int _soAo, int _maDoiBong) {
+    id = _id; tuoi = _tuoi; soAo = _soAo; maDoiBong = _maDoiBong;
+    soBanThang = 0; soTranChoi = 0; sdt = 0; ptrDoiBong = nullptr; ngaySinh = 0;
+    std::strncpy(ten, _ten, 49); ten[49] = '\0';
+    std::strncpy(viTri, _viTri, 49); viTri[49] = '\0';
+    maQuocGia[0] = '\0';
 }
 
-// ======================= CAU THU =======================
+const cauThu* cauThu::get() const { return this; }
 
-void cauThu::add() {
-    cout << "Ten: ";
-    nhapChuoi(ten, 50);
-
-    cout << "Vi tri: ";
-    cin.getline(viTri, 50);
-
-    cout << "Tuoi: ";
-    cin >> tuoi;
-
-    cout << "So ao: ";
-    cin >> soAo;
-
-    cout << "So ban thang: ";
-    cin >> soBanThang;
-
-    cout << "Ma quoc gia: ";
-    nhapMaQuocGia(maQuocGia);
-
-    cout << "Ma doi bong: ";
-    cin >> maDoiBong;
-
-    cout << "So tran choi: ";
-    cin >> soTranChoi;
-
-    cout << "So dien thoai: ";
-    cin >> sdt;
-
-    doiBong = nullptr;
+void cauThu::update(const cauThu& thongTinMoi) {
+    std::strncpy(ten, thongTinMoi.ten, 49); ten[49] = '\0';
+    std::strncpy(viTri, thongTinMoi.viTri, 49); viTri[49] = '\0';
+    tuoi = thongTinMoi.tuoi;
+    soAo = thongTinMoi.soAo;
+    soBanThang = thongTinMoi.soBanThang;
+    maDoiBong = thongTinMoi.maDoiBong;
+    soTranChoi = thongTinMoi.soTranChoi;
+    sdt = thongTinMoi.sdt;
+    ngaySinh = thongTinMoi.ngaySinh;
+    std::strncpy(maQuocGia, thongTinMoi.maQuocGia, 3); maQuocGia[3] = '\0';
 }
 
-void cauThu::update() {
-    cout << "Ten moi: ";
-    nhapChuoi(ten, 50);
-
-    cout << "Vi tri moi: ";
-    cin.getline(viTri, 50);
-
-    cout << "Tuoi moi: ";
-    cin >> tuoi;
-
-    cout << "So ao moi: ";
-    cin >> soAo;
-
-    cout << "So ban thang moi: ";
-    cin >> soBanThang;
-
-    cout << "Ma quoc gia moi: ";
-    nhapMaQuocGia(maQuocGia);
-
-    cout << "Ma doi bong moi: ";
-    cin >> maDoiBong;
-
-    cout << "So tran choi moi: ";
-    cin >> soTranChoi;
-
-    cout << "So dien thoai moi: ";
-    cin >> sdt;
+// ==================== DOI BONG ====================
+doiBong::doiBong() {
+    id = 0; soCauThu = 0; soTranThang = 0; soTranHoa = 0; soTranThua = 0; soBanThang = 0; soBanThua = 0;
+    diemXepHang = 0; ngayThanhLap = 0; soCauThuHienTai = 0;
+    ten[0] = '\0'; huanLuyenVien[0] = '\0'; diaPhuong[0] = '\0'; maQuocGia[0] = '\0';
+    listCauThu = nullptr; cauThuList = nullptr;
 }
 
-cauThu cauThu::get() {
-    cout << "\nID: " << id
-         << "\nTen: " << ten
-         << "\nVi tri: " << viTri
-         << "\nTuoi: " << tuoi
-         << "\nSo ao: " << soAo
-         << "\nSo ban thang: " << soBanThang
-         << "\nMa quoc gia: " << maQuocGia
-         << "\nMa doi bong: " << maDoiBong
-         << "\nSo tran choi: " << soTranChoi
-         << "\nSo dien thoai: " << sdt << '\n';
-
-    return *this;
+doiBong::doiBong(long long _id, const char* _ten, const char* _hlv, const char* _diaPhuong) {
+    id = _id; soCauThu = 0; soTranThang = 0; soTranHoa = 0; soTranThua = 0; soBanThang = 0; soBanThua = 0;
+    diemXepHang = 0; ngayThanhLap = 0; soCauThuHienTai = 0;
+    std::strncpy(ten, _ten, 49); ten[49] = '\0';
+    std::strncpy(huanLuyenVien, _hlv, 49); huanLuyenVien[49] = '\0';
+    std::strncpy(diaPhuong, _diaPhuong, 49); diaPhuong[49] = '\0';
+    maQuocGia[0] = '\0';
+    listCauThu = nullptr; cauThuList = nullptr;
 }
 
-void cauThu::del() {
-    for (int i = 0; i < soLuongCauThu; i++) {
-        if (dsCauThu[i].id == id) {
-            dsCauThu[i] = dsCauThu[soLuongCauThu - 1];
-            soLuongCauThu--;
-            return;
-        }
-    }
+doiBong::~doiBong() {
+    if (listCauThu != nullptr) delete[] listCauThu;
 }
 
-// ======================= DOI BONG =======================
+const doiBong* doiBong::get() const { return this; }
 
-void doiBong::add() {
-    cout << "Ten doi bong: ";
-    nhapChuoi(ten, 50);
-
-    cout << "Huan luyen vien: ";
-    cin.getline(huanLuyenVien, 50);
-
-    cout << "Dia phuong: ";
-    cin.getline(diaPhuong, 50);
-
-    cout << "Ma quoc gia: ";
-    nhapMaQuocGia(maQuocGia);
-
-    cout << "So cau thu: ";
-    cin >> soCauThu;
-
-    cout << "So tran thang: ";
-    cin >> soTranThang;
-
-    cout << "So tran hoa: ";
-    cin >> soTranHoa;
-
-    cout << "So tran thua: ";
-    cin >> soTranThua;
-
-    cout << "So ban thang: ";
-    cin >> soBanThang;
-
-    cout << "So ban thua: ";
-    cin >> soBanThua;
-
-    cauThu = nullptr;
+void doiBong::update(const doiBong& thongTinMoi) {
+    std::strncpy(ten, thongTinMoi.ten, 49); ten[49] = '\0';
+    std::strncpy(huanLuyenVien, thongTinMoi.huanLuyenVien, 49); huanLuyenVien[49] = '\0';
+    std::strncpy(diaPhuong, thongTinMoi.diaPhuong, 49); diaPhuong[49] = '\0';
+    std::strncpy(maQuocGia, thongTinMoi.maQuocGia, 3); maQuocGia[3] = '\0';
+    soCauThu = thongTinMoi.soCauThu;
+    soTranThang = thongTinMoi.soTranThang;
+    soTranHoa = thongTinMoi.soTranHoa;
+    soTranThua = thongTinMoi.soTranThua;
+    soBanThang = thongTinMoi.soBanThang;
+    soBanThua = thongTinMoi.soBanThua;
+    diemXepHang = thongTinMoi.diemXepHang;
+    ngayThanhLap = thongTinMoi.ngayThanhLap;
 }
 
-void doiBong::update() {
-    add();
+// ==================== TRAN DAU ====================
+tranDau::tranDau() {
+    id = 0; maDoiBong1 = 0; maDoiBong2 = 0; soBanThangDoi1 = 0; soBanThangDoi2 = 0;
+    soTheVangDoi1 = 0; soTheVangDoi2 = 0; ngayThiDau = 0;
+    sanVanDong[0] = '\0';
 }
 
-doiBong doiBong::get() {
-    cout << "\nID: " << id
-         << "\nTen doi bong: " << ten
-         << "\nHuan luyen vien: " << huanLuyenVien
-         << "\nDia phuong: " << diaPhuong
-         << "\nMa quoc gia: " << maQuocGia
-         << "\nSo cau thu: " << soCauThu
-         << "\nSo tran thang: " << soTranThang
-         << "\nSo tran hoa: " << soTranHoa
-         << "\nSo tran thua: " << soTranThua
-         << "\nSo ban thang: " << soBanThang
-         << "\nSo ban thua: " << soBanThua << '\n';
-
-    return *this;
+tranDau::tranDau(long long _id, int _maDB1, int _maDB2, int _b1, int _b2,  long long _ngay, int _theVang1, int _theVang2) {
+    id = _id; maDoiBong1 = _maDB1; maDoiBong2 = _maDB2;
+    soBanThangDoi1 = _b1; soBanThangDoi2 = _b2;
+    ngayThiDau = _ngay;
+    soTheVangDoi1 = _theVang1;
+    soTheVangDoi2 = _theVang2;
+    sanVanDong[0] = '\0';
 }
 
-void doiBong::del() {
-    for (int i = 0; i < soLuongDoiBong; i++) {
-        if (dsDoiBong[i].id == id) {
-            dsDoiBong[i] = dsDoiBong[soLuongDoiBong - 1];
-            soLuongDoiBong--;
-            return;
-        }
-    }
-}
+const tranDau* tranDau::get() const { return this; }
 
-// ======================= TRAN DAU =======================
-
-void tranDau::add() {
-    cout << "Ma doi bong 1: ";
-    cin >> maDoiBong1;
-
-    cout << "Ma doi bong 2: ";
-    cin >> maDoiBong2;
-
-    cout << "So ban thang doi 1: ";
-    cin >> soBanThang1;
-
-    cout << "So ban thang doi 2: ";
-    cin >> soBanThang2;
-
-    ketQua = soBanThang1 > soBanThang2;
-
-    cout << "San thi dau: ";
-    nhapChuoi(sanThiDau, 50);
-
-    cout << "Ngay thi dau: ";
-    cin.getline(ngayThiDau, 50);
-
-    cout << "Thoi gian: ";
-    cin.getline(thoiGian, 50);
-
-    cout << "Dia diem: ";
-    cin.getline(diaDiem, 50);
-}
-
-void tranDau::update() {
-    add();
-}
-
-tranDau tranDau::get() {
-    cout << "\nID: " << id
-         << "\nMa doi bong 1: " << maDoiBong1
-         << "\nMa doi bong 2: " << maDoiBong2
-         << "\nTi so: " << soBanThang1
-         << " - " << soBanThang2
-         << "\nSan thi dau: " << sanThiDau
-         << "\nNgay thi dau: " << ngayThiDau
-         << "\nThoi gian: " << thoiGian
-         << "\nDia diem: " << diaDiem << '\n';
-
-    return *this;
-}
-
-void tranDau::del() {
-    for (int i = 0; i < soLuongTranDau; i++) {
-        if (dsTranDau[i].id == id) {
-            dsTranDau[i] = dsTranDau[soLuongTranDau - 1];
-            soLuongTranDau--;
-            return;
-        }
-    }
-}
-
-// ======================= CSDL =======================
-
-void CSDL::add() {
-    int loai;
-
-    cout << "\n1. Them cau thu";
-    cout << "\n2. Them doi bong";
-    cout << "\n3. Them tran dau";
-    cout << "\nChon: ";
-    cin >> loai;
-
-    if (loai == 1 && soLuongCauThu < MAX_RECORD) {
-        cauThu item;
-        item.id = idCauThu++;
-        item.add();
-        dsCauThu[soLuongCauThu++] = item;
-    }
-    else if (loai == 2 && soLuongDoiBong < MAX_RECORD) {
-        doiBong item;
-        item.id = idDoiBong++;
-        item.add();
-        dsDoiBong[soLuongDoiBong++] = item;
-    }
-    else if (loai == 3 && soLuongTranDau < MAX_RECORD) {
-        tranDau item;
-        item.id = idTranDau++;
-        item.add();
-        dsTranDau[soLuongTranDau++] = item;
-    }
-    else {
-        cout << "Lua chon khong hop le hoac mang da day!\n";
-    }
-}
-
-void CSDL::del() {
-    int loai;
-    long long id;
-
-    cout << "Loai bang can xoa: ";
-    cin >> loai;
-
-    cout << "ID can xoa: ";
-    cin >> id;
-
-    if (loai == 1) {
-        for (int i = 0; i < soLuongCauThu; i++) {
-            if (dsCauThu[i].id == id) {
-                dsCauThu[i] = dsCauThu[soLuongCauThu - 1];
-                soLuongCauThu--;
-                cout << "Xoa thanh cong!\n";
-                return;
-            }
-        }
-    }
-    else if (loai == 2) {
-        for (int i = 0; i < soLuongDoiBong; i++) {
-            if (dsDoiBong[i].id == id) {
-                dsDoiBong[i] = dsDoiBong[soLuongDoiBong - 1];
-                soLuongDoiBong--;
-                cout << "Xoa thanh cong!\n";
-                return;
-            }
-        }
-    }
-    else if (loai == 3) {
-        for (int i = 0; i < soLuongTranDau; i++) {
-            if (dsTranDau[i].id == id) {
-                dsTranDau[i] = dsTranDau[soLuongTranDau - 1];
-                soLuongTranDau--;
-                cout << "Xoa thanh cong!\n";
-                return;
-            }
-        }
-    }
-
-    cout << "Khong tim thay ID!\n";
-}
-
-void CSDL::update() {
-    int loai;
-    long long id;
-
-    cout << "Loai bang can sua: ";
-    cin >> loai;
-
-    cout << "ID can sua: ";
-    cin >> id;
-
-    if (loai == 1) {
-        for (int i = 0; i < soLuongCauThu; i++) {
-            if (dsCauThu[i].id == id) {
-                dsCauThu[i].update();
-                dsCauThu[i].id = id;
-                return;
-            }
-        }
-    }
-    else if (loai == 2) {
-        for (int i = 0; i < soLuongDoiBong; i++) {
-            if (dsDoiBong[i].id == id) {
-                dsDoiBong[i].update();
-                dsDoiBong[i].id = id;
-                return;
-            }
-        }
-    }
-    else if (loai == 3) {
-        for (int i = 0; i < soLuongTranDau; i++) {
-            if (dsTranDau[i].id == id) {
-                dsTranDau[i].update();
-                dsTranDau[i].id = id;
-                return;
-            }
-        }
-    }
-
-    cout << "Khong tim thay ID!\n";
-}
-
-void CSDL::get() {
-    int loai;
-
-    cout << "Loai bang can xem: ";
-    cin >> loai;
-
-    if (loai == 1) {
-        for (int i = 0; i < soLuongCauThu; i++)
-            dsCauThu[i].get();
-    }
-    else if (loai == 2) {
-        for (int i = 0; i < soLuongDoiBong; i++)
-            dsDoiBong[i].get();
-    }
-    else if (loai == 3) {
-        for (int i = 0; i < soLuongTranDau; i++)
-            dsTranDau[i].get();
-    }
-    else {
-        cout << "Loai bang khong hop le!\n";
-    }
+void tranDau::update(const tranDau& thongTinMoi) {
+    id = thongTinMoi.id;
+    maDoiBong1 = thongTinMoi.maDoiBong1;
+    maDoiBong2 = thongTinMoi.maDoiBong2;
+    soBanThangDoi1 = thongTinMoi.soBanThangDoi1;
+    soBanThangDoi2 = thongTinMoi.soBanThangDoi2;
+    soTheVangDoi1 = thongTinMoi.soTheVangDoi1;
+    soTheVangDoi2 = thongTinMoi.soTheVangDoi2;
+    ngayThiDau = thongTinMoi.ngayThiDau;
+    std::strncpy(sanVanDong, thongTinMoi.sanVanDong, 49); sanVanDong[49] = '\0';
 }
