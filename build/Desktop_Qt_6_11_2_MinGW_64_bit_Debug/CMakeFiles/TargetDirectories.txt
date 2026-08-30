@@ -1,0 +1,5 @@
+C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/PLB2.dir
+C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/edit_cache.dir
+C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/PLB2_autogen_timestamp_deps.dir
+C:/Users/PC/Downloads/webnew/PLB2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/PLB2_autogen.dir
