@@ -1,0 +1,296 @@
+[30/08/2026 22:05:49] [INSERT] Them doi bong moi ID: 1, Ten: Manchester United
+[30/08/2026 22:05:49] [INSERT] Them doi bong moi ID: 2, Ten: Liverpool
+[30/08/2026 22:05:49] [INSERT] Them cau thu moi ID: 1, Ten: Cristiano Ronaldo
+[30/08/2026 22:06:30] [INSERT] Them doi bong moi ID: 3, Ten: Arsenal
+[30/08/2026 22:06:30] [INSERT] Them doi bong moi ID: 4, Ten: Chelsea
+[30/08/2026 22:06:30] [INSERT] Them doi bong moi ID: 5, Ten: Manchester City
+[30/08/2026 22:06:30] [INSERT] Them doi bong moi ID: 6, Ten: Real Madrid
+[30/08/2026 22:06:30] [INSERT] Them doi bong moi ID: 7, Ten: Barcelona
+[30/08/2026 22:06:30] [INSERT] Them doi bong moi ID: 8, Ten: Bayern Munich
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 2, Ten: Manchester United Player 2
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 3, Ten: Manchester United Player 3
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 4, Ten: Manchester United Player 4
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 5, Ten: Manchester United Player 5
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 6, Ten: Manchester United Player 6
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 7, Ten: Manchester United Player 7
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 8, Ten: Manchester United Player 8
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 9, Ten: Manchester United Player 9
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 10, Ten: Manchester United Player 10
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 11, Ten: Manchester United Player 11
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 12, Ten: Liverpool Player 1
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 13, Ten: Liverpool Player 2
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 14, Ten: Liverpool Player 3
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 15, Ten: Liverpool Player 4
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 16, Ten: Liverpool Player 5
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 17, Ten: Liverpool Player 6
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 18, Ten: Liverpool Player 7
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 19, Ten: Liverpool Player 8
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 20, Ten: Liverpool Player 9
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 21, Ten: Liverpool Player 10
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 22, Ten: Liverpool Player 11
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 23, Ten: Arsenal Player 1
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 24, Ten: Arsenal Player 2
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 25, Ten: Arsenal Player 3
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 26, Ten: Arsenal Player 4
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 27, Ten: Arsenal Player 5
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 28, Ten: Arsenal Player 6
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 29, Ten: Arsenal Player 7
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 30, Ten: Arsenal Player 8
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 31, Ten: Arsenal Player 9
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 32, Ten: Arsenal Player 10
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 33, Ten: Arsenal Player 11
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 34, Ten: Chelsea Player 1
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 35, Ten: Chelsea Player 2
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 36, Ten: Chelsea Player 3
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 37, Ten: Chelsea Player 4
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 38, Ten: Chelsea Player 5
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 39, Ten: Chelsea Player 6
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 40, Ten: Chelsea Player 7
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 41, Ten: Chelsea Player 8
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 42, Ten: Chelsea Player 9
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 43, Ten: Chelsea Player 10
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 44, Ten: Chelsea Player 11
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 45, Ten: Manchester City Player 1
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 46, Ten: Manchester City Player 2
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 47, Ten: Manchester City Player 3
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 48, Ten: Manchester City Player 4
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 49, Ten: Manchester City Player 5
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 50, Ten: Manchester City Player 6
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 51, Ten: Manchester City Player 7
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 52, Ten: Manchester City Player 8
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 53, Ten: Manchester City Player 9
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 54, Ten: Manchester City Player 10
+[30/08/2026 22:06:30] [INSERT] Them cau thu moi ID: 55, Ten: Manchester City Player 11
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 56, Ten: Real Madrid Player 1
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 57, Ten: Real Madrid Player 2
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 58, Ten: Real Madrid Player 3
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 59, Ten: Real Madrid Player 4
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 60, Ten: Real Madrid Player 5
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 61, Ten: Real Madrid Player 6
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 62, Ten: Real Madrid Player 7
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 63, Ten: Real Madrid Player 8
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 64, Ten: Real Madrid Player 9
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 65, Ten: Real Madrid Player 10
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 66, Ten: Real Madrid Player 11
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 67, Ten: Barcelona Player 1
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 68, Ten: Barcelona Player 2
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 69, Ten: Barcelona Player 3
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 70, Ten: Barcelona Player 4
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 71, Ten: Barcelona Player 5
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 72, Ten: Barcelona Player 6
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 73, Ten: Barcelona Player 7
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 74, Ten: Barcelona Player 8
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 75, Ten: Barcelona Player 9
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 76, Ten: Barcelona Player 10
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 77, Ten: Barcelona Player 11
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 78, Ten: Bayern Munich Player 1
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 79, Ten: Bayern Munich Player 2
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 80, Ten: Bayern Munich Player 3
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 81, Ten: Bayern Munich Player 4
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 82, Ten: Bayern Munich Player 5
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 83, Ten: Bayern Munich Player 6
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 84, Ten: Bayern Munich Player 7
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 85, Ten: Bayern Munich Player 8
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 86, Ten: Bayern Munich Player 9
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 87, Ten: Bayern Munich Player 10
+[30/08/2026 22:06:31] [INSERT] Them cau thu moi ID: 88, Ten: Bayern Munich Player 11
+[30/08/2026 22:06:31] [INSERT] Them tran dau moi ID: 1
+[30/08/2026 22:06:31] [INSERT] Them tran dau moi ID: 2
+[30/08/2026 22:08:36] [INSERT] Them tran dau moi ID: 3
+[30/08/2026 22:10:47] [INSERT] Them doi bong moi ID: 1, Ten: Manchester United
+[30/08/2026 22:10:47] [INSERT] Them doi bong moi ID: 2, Ten: Liverpool
+[30/08/2026 22:10:47] [INSERT] Them doi bong moi ID: 3, Ten: Arsenal
+[30/08/2026 22:10:47] [INSERT] Them doi bong moi ID: 4, Ten: Chelsea
+[30/08/2026 22:10:47] [INSERT] Them doi bong moi ID: 5, Ten: Manchester City
+[30/08/2026 22:10:47] [INSERT] Them doi bong moi ID: 6, Ten: Real Madrid
+[30/08/2026 22:10:47] [INSERT] Them doi bong moi ID: 7, Ten: Barcelona
+[30/08/2026 22:10:47] [INSERT] Them doi bong moi ID: 8, Ten: Bayern Munich
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 1, Ten: Manchester United Player 1
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 2, Ten: Manchester United Player 2
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 3, Ten: Manchester United Player 3
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 4, Ten: Manchester United Player 4
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 5, Ten: Manchester United Player 5
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 6, Ten: Manchester United Player 6
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 7, Ten: Manchester United Player 7
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 8, Ten: Manchester United Player 8
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 9, Ten: Manchester United Player 9
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 10, Ten: Manchester United Player 10
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 11, Ten: Manchester United Player 11
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 12, Ten: Liverpool Player 1
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 13, Ten: Liverpool Player 2
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 14, Ten: Liverpool Player 3
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 15, Ten: Liverpool Player 4
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 16, Ten: Liverpool Player 5
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 17, Ten: Liverpool Player 6
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 18, Ten: Liverpool Player 7
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 19, Ten: Liverpool Player 8
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 20, Ten: Liverpool Player 9
+[30/08/2026 22:10:47] [INSERT] Them cau thu moi ID: 21, Ten: Liverpool Player 10
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 22, Ten: Liverpool Player 11
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 23, Ten: Arsenal Player 1
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 24, Ten: Arsenal Player 2
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 25, Ten: Arsenal Player 3
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 26, Ten: Arsenal Player 4
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 27, Ten: Arsenal Player 5
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 28, Ten: Arsenal Player 6
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 29, Ten: Arsenal Player 7
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 30, Ten: Arsenal Player 8
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 31, Ten: Arsenal Player 9
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 32, Ten: Arsenal Player 10
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 33, Ten: Arsenal Player 11
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 34, Ten: Chelsea Player 1
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 35, Ten: Chelsea Player 2
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 36, Ten: Chelsea Player 3
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 37, Ten: Chelsea Player 4
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 38, Ten: Chelsea Player 5
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 39, Ten: Chelsea Player 6
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 40, Ten: Chelsea Player 7
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 41, Ten: Chelsea Player 8
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 42, Ten: Chelsea Player 9
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 43, Ten: Chelsea Player 10
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 44, Ten: Chelsea Player 11
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 45, Ten: Manchester City Player 1
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 46, Ten: Manchester City Player 2
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 47, Ten: Manchester City Player 3
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 48, Ten: Manchester City Player 4
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 49, Ten: Manchester City Player 5
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 50, Ten: Manchester City Player 6
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 51, Ten: Manchester City Player 7
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 52, Ten: Manchester City Player 8
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 53, Ten: Manchester City Player 9
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 54, Ten: Manchester City Player 10
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 55, Ten: Manchester City Player 11
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 56, Ten: Real Madrid Player 1
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 57, Ten: Real Madrid Player 2
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 58, Ten: Real Madrid Player 3
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 59, Ten: Real Madrid Player 4
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 60, Ten: Real Madrid Player 5
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 61, Ten: Real Madrid Player 6
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 62, Ten: Real Madrid Player 7
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 63, Ten: Real Madrid Player 8
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 64, Ten: Real Madrid Player 9
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 65, Ten: Real Madrid Player 10
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 66, Ten: Real Madrid Player 11
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 67, Ten: Barcelona Player 1
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 68, Ten: Barcelona Player 2
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 69, Ten: Barcelona Player 3
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 70, Ten: Barcelona Player 4
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 71, Ten: Barcelona Player 5
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 72, Ten: Barcelona Player 6
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 73, Ten: Barcelona Player 7
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 74, Ten: Barcelona Player 8
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 75, Ten: Barcelona Player 9
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 76, Ten: Barcelona Player 10
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 77, Ten: Barcelona Player 11
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 78, Ten: Bayern Munich Player 1
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 79, Ten: Bayern Munich Player 2
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 80, Ten: Bayern Munich Player 3
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 81, Ten: Bayern Munich Player 4
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 82, Ten: Bayern Munich Player 5
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 83, Ten: Bayern Munich Player 6
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 84, Ten: Bayern Munich Player 7
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 85, Ten: Bayern Munich Player 8
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 86, Ten: Bayern Munich Player 9
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 87, Ten: Bayern Munich Player 10
+[30/08/2026 22:10:48] [INSERT] Them cau thu moi ID: 88, Ten: Bayern Munich Player 11
+[30/08/2026 22:10:48] [INSERT] Them tran dau moi ID: 1
+[30/08/2026 22:10:48] [INSERT] Them tran dau moi ID: 2
+[31/08/2026 08:04:38] [UPDATE] Cap nhat cau thu ID: 1 - Ten: Manchester United Player 1
+[31/08/2026 08:47:16] [INSERT] Them doi bong moi ID: 1, Ten: Manchester United
+[31/08/2026 08:47:16] [INSERT] Them doi bong moi ID: 2, Ten: Liverpool
+[31/08/2026 08:47:16] [INSERT] Them doi bong moi ID: 3, Ten: Arsenal
+[31/08/2026 08:47:16] [INSERT] Them doi bong moi ID: 4, Ten: Chelsea
+[31/08/2026 08:47:16] [INSERT] Them doi bong moi ID: 5, Ten: Manchester City
+[31/08/2026 08:47:16] [INSERT] Them doi bong moi ID: 6, Ten: Real Madrid
+[31/08/2026 08:47:16] [INSERT] Them doi bong moi ID: 7, Ten: Barcelona
+[31/08/2026 08:47:16] [INSERT] Them doi bong moi ID: 8, Ten: Bayern Munich
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 1, Ten: Manchester United Player 1
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 2, Ten: Manchester United Player 2
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 3, Ten: Manchester United Player 3
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 4, Ten: Manchester United Player 4
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 5, Ten: Manchester United Player 5
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 6, Ten: Manchester United Player 6
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 7, Ten: Manchester United Player 7
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 8, Ten: Manchester United Player 8
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 9, Ten: Manchester United Player 9
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 10, Ten: Manchester United Player 10
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 11, Ten: Manchester United Player 11
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 12, Ten: Liverpool Player 1
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 13, Ten: Liverpool Player 2
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 14, Ten: Liverpool Player 3
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 15, Ten: Liverpool Player 4
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 16, Ten: Liverpool Player 5
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 17, Ten: Liverpool Player 6
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 18, Ten: Liverpool Player 7
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 19, Ten: Liverpool Player 8
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 20, Ten: Liverpool Player 9
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 21, Ten: Liverpool Player 10
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 22, Ten: Liverpool Player 11
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 23, Ten: Arsenal Player 1
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 24, Ten: Arsenal Player 2
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 25, Ten: Arsenal Player 3
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 26, Ten: Arsenal Player 4
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 27, Ten: Arsenal Player 5
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 28, Ten: Arsenal Player 6
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 29, Ten: Arsenal Player 7
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 30, Ten: Arsenal Player 8
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 31, Ten: Arsenal Player 9
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 32, Ten: Arsenal Player 10
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 33, Ten: Arsenal Player 11
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 34, Ten: Chelsea Player 1
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 35, Ten: Chelsea Player 2
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 36, Ten: Chelsea Player 3
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 37, Ten: Chelsea Player 4
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 38, Ten: Chelsea Player 5
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 39, Ten: Chelsea Player 6
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 40, Ten: Chelsea Player 7
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 41, Ten: Chelsea Player 8
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 42, Ten: Chelsea Player 9
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 43, Ten: Chelsea Player 10
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 44, Ten: Chelsea Player 11
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 45, Ten: Manchester City Player 1
+[31/08/2026 08:47:16] [INSERT] Them cau thu moi ID: 46, Ten: Manchester City Player 2
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 47, Ten: Manchester City Player 3
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 48, Ten: Manchester City Player 4
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 49, Ten: Manchester City Player 5
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 50, Ten: Manchester City Player 6
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 51, Ten: Manchester City Player 7
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 52, Ten: Manchester City Player 8
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 53, Ten: Manchester City Player 9
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 54, Ten: Manchester City Player 10
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 55, Ten: Manchester City Player 11
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 56, Ten: Real Madrid Player 1
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 57, Ten: Real Madrid Player 2
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 58, Ten: Real Madrid Player 3
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 59, Ten: Real Madrid Player 4
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 60, Ten: Real Madrid Player 5
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 61, Ten: Real Madrid Player 6
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 62, Ten: Real Madrid Player 7
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 63, Ten: Real Madrid Player 8
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 64, Ten: Real Madrid Player 9
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 65, Ten: Real Madrid Player 10
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 66, Ten: Real Madrid Player 11
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 67, Ten: Barcelona Player 1
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 68, Ten: Barcelona Player 2
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 69, Ten: Barcelona Player 3
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 70, Ten: Barcelona Player 4
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 71, Ten: Barcelona Player 5
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 72, Ten: Barcelona Player 6
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 73, Ten: Barcelona Player 7
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 74, Ten: Barcelona Player 8
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 75, Ten: Barcelona Player 9
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 76, Ten: Barcelona Player 10
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 77, Ten: Barcelona Player 11
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 78, Ten: Bayern Munich Player 1
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 79, Ten: Bayern Munich Player 2
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 80, Ten: Bayern Munich Player 3
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 81, Ten: Bayern Munich Player 4
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 82, Ten: Bayern Munich Player 5
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 83, Ten: Bayern Munich Player 6
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 84, Ten: Bayern Munich Player 7
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 85, Ten: Bayern Munich Player 8
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 86, Ten: Bayern Munich Player 9
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 87, Ten: Bayern Munich Player 10
+[31/08/2026 08:47:17] [INSERT] Them cau thu moi ID: 88, Ten: Bayern Munich Player 11
+[31/08/2026 08:47:17] [INSERT] Them tran dau moi ID: 1
+[31/08/2026 08:47:17] [INSERT] Them tran dau moi ID: 2

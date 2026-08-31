@@ -40,32 +40,44 @@ template <> constexpr inline auto MatchWidget::qt_create_metaobjectdata<qt_meta_
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "MatchWidget",
-        "onAddMatch",
-        "",
-        "onEditMatch",
-        "onDeleteMatch",
-        "onApplySearch",
-        "onClearSearch",
         "onTableClicked",
+        "",
         "row",
-        "column"
+        "column",
+        "onOpenAddForm",
+        "loadMatchToForm",
+        "id",
+        "onResetForm",
+        "onSaveData",
+        "onDeleteMatch",
+        "onBack",
+        "onApplySearch",
+        "onClearSearch"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'onAddMatch'
-        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'onEditMatch'
-        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'onDeleteMatch'
-        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'onApplySearch'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'onClearSearch'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onTableClicked'
-        QtMocHelpers::SlotData<void(int, int)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Int, 8 }, { QMetaType::Int, 9 },
+        QtMocHelpers::SlotData<void(int, int)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 3 }, { QMetaType::Int, 4 },
         }}),
+        // Slot 'onOpenAddForm'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'loadMatchToForm'
+        QtMocHelpers::SlotData<void(long long)>(6, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::LongLong, 7 },
+        }}),
+        // Slot 'onResetForm'
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onSaveData'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onDeleteMatch'
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onBack'
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onApplySearch'
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onClearSearch'
+        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -89,12 +101,15 @@ void MatchWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     auto *_t = static_cast<MatchWidget *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->onAddMatch(); break;
-        case 1: _t->onEditMatch(); break;
-        case 2: _t->onDeleteMatch(); break;
-        case 3: _t->onApplySearch(); break;
-        case 4: _t->onClearSearch(); break;
-        case 5: _t->onTableClicked((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 0: _t->onTableClicked((*reinterpret_cast<std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 1: _t->onOpenAddForm(); break;
+        case 2: _t->loadMatchToForm((*reinterpret_cast<std::add_pointer_t<qlonglong>>(_a[1]))); break;
+        case 3: _t->onResetForm(); break;
+        case 4: _t->onSaveData(); break;
+        case 5: _t->onDeleteMatch(); break;
+        case 6: _t->onBack(); break;
+        case 7: _t->onApplySearch(); break;
+        case 8: _t->onClearSearch(); break;
         default: ;
         }
     }
@@ -119,14 +134,14 @@ int MatchWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 6;
+        _id -= 9;
     }
     return _id;
 }

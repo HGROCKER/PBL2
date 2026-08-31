@@ -1,0 +1,9 @@
+id|ten|huanLuyenVien|diaPhuong|diemXepHang
+1|Manchester United|HLV Truong|Manchester|0
+2|Liverpool|HLV Truong|Liverpool|0
+3|Arsenal|HLV Truong|London|0
+4|Chelsea|HLV Truong|London|0
+5|Manchester City|HLV Truong|Manchester|0
+6|Real Madrid|HLV Truong|Madrid|0
+7|Barcelona|HLV Truong|Barcelona|0
+8|Bayern Munich|HLV Truong|Munich|0

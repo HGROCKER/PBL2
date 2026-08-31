@@ -442,6 +442,9 @@ CMakeFiles/PLB2.dir/PLB2_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.11.2/mingw_64/include/QtCore/qcalendar.h \
  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QHeaderView \
  C:/Qt/6.11.2/mingw_64/include/QtWidgets/qheaderview.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QStackedWidget \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/qstackedwidget.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QFrame \
  C:/Users/PC/Downloads/webnew/PLB2/database.h \
  C:/Users/PC/Downloads/webnew/PLB2/vector.h \
  C:/Users/PC/Downloads/webnew/PLB2/csdl.h \
@@ -459,11 +462,24 @@ CMakeFiles/PLB2.dir/PLB2_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ostream.tcc \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
  C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc \
- C:/Users/PC/Downloads/webnew/PLB2/search_features.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/fstream \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/codecvt.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fstream.tcc \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/sstream \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/sstream.tcc \
  C:/Qt/6.11.2/mingw_64/include/QtCore/QString \
+ C:/Users/PC/Downloads/webnew/PLB2/search_features.h \
  C:/Qt/6.11.2/mingw_64/include/QtCore/qtmochelpers.h \
  C:/Qt/6.11.2/mingw_64/include/QtCore/qtmocconstants.h \
  C:/Qt/6.11.2/mingw_64/include/QtCore/q20algorithm.h \
+ C:\Users\PC\Downloads\webnew\PLB2\build\Desktop_Qt_6_11_2_MinGW_64_bit_Debug\PLB2_autogen\EWIEGA46WW/moc_player_widget.cpp \
+ C:/Users/PC/Downloads/webnew/PLB2/player_widget.h \
+ C:\Users\PC\Downloads\webnew\PLB2\build\Desktop_Qt_6_11_2_MinGW_64_bit_Debug\PLB2_autogen\EWIEGA46WW/moc_team_widget.cpp \
+ C:/Users/PC/Downloads/webnew/PLB2/team_widget.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QDialog \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QDialogButtonBox \
  C:\Users\PC\Downloads\webnew\PLB2\build\Desktop_Qt_6_11_2_MinGW_64_bit_Debug\PLB2_autogen\EWIEGA46WW/moc_tournament_widget.cpp \
  C:/Users/PC/Downloads/webnew/PLB2/tournament_widget.h \
  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsView \

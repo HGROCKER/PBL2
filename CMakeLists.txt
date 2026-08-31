@@ -22,6 +22,8 @@ set(HEADERS
     csdl.h
     search_features.h
     match_widget.h
+    player_widget.h
+    team_widget.h
     tournament_widget.h
 )
 

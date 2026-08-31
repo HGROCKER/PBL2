@@ -372,9 +372,21 @@
 			null
 		],
 		[
+			"C:/Users/PC/Downloads/webnew/PLB2/player_widget.h",
+			"MU",
+			"EWIEGA46WW/moc_player_widget.cpp",
+			null
+		],
+		[
 			"C:/Users/PC/Downloads/webnew/PLB2/search_features.h",
 			"MU",
 			"EWIEGA46WW/moc_search_features.cpp",
+			null
+		],
+		[
+			"C:/Users/PC/Downloads/webnew/PLB2/team_widget.h",
+			"MU",
+			"EWIEGA46WW/moc_team_widget.cpp",
 			null
 		],
 		[

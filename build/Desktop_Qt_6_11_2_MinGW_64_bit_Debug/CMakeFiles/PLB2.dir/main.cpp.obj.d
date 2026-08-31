@@ -481,8 +481,22 @@ CMakeFiles/PLB2.dir/main.cpp.obj: \
  C:\Users\PC\Downloads\webnew\PLB2\vector.h \
  C:\Users\PC\Downloads\webnew\PLB2\csdl.h \
  C:\Users\PC\Downloads\webnew\PLB2\database.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/fstream \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/codecvt.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fstream.tcc \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/sstream \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/sstream.tcc \
+ C:\Users\PC\Downloads\webnew\PLB2\player_widget.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QStackedWidget \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/qstackedwidget.h \
  C:\Users\PC\Downloads\webnew\PLB2\search_features.h \
+ C:\Users\PC\Downloads\webnew\PLB2\team_widget.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QDialog \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QDialogButtonBox \
  C:\Users\PC\Downloads\webnew\PLB2\match_widget.h \
+ C:/Qt/6.11.2/mingw_64/include/QtWidgets/QFrame \
  C:\Users\PC\Downloads\webnew\PLB2\tournament_widget.h \
  C:/Qt/6.11.2/mingw_64/include/QtWidgets/QGraphicsView \
  C:/Qt/6.11.2/mingw_64/include/QtWidgets/qgraphicsview.h \
