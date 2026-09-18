@@ -6,7 +6,7 @@
 #include "CSDL.h"
 #include <iostream>
 #include <cstring>
-
+sdas
 // ==================== TEMPLATE INDEX TỔNG QUÁT ====================
 // ✅ FIX: Thay đổi 'id' → 'entityId' để nhất quán
 template <typename K>
