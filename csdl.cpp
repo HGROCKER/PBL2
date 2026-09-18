@@ -1,7 +1,7 @@
 #include "CSDL.h"
 #include <cstring>
 #include <iostream>
-
+//test
 // ==================== CAU THU ====================
 cauThu::cauThu() {
     id = 0; tuoi = 0; soAo = 0; soBanThang = 0; maDoiBong = 0; soTranChoi = 0; sdt = 0;
