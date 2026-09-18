@@ -285,7 +285,8 @@ public:
     }
 
     bool delete_by_id(long long targetId) {
-        
+        // ❌ SecondaryIndex không hỗ trợ xóa theo .id
+        // ✅ Dùng delete_by_index() thay thế (với vị trí được tìm từ findIndexPosition)
         return false;
     }
 
