@@ -1,8 +1,9 @@
-#include "CSDL.h"
+#include "csdl.h"
 #include <cstring>
 #include <iostream>
-//test
-// ==================== CAU THU ====================
+#include <string.h>
+using namespace std;
+
 cauThu::cauThu() {
     id = 0; tuoi = 0; soAo = 0; soBanThang = 0; maDoiBong = 0; soTranChoi = 0; sdt = 0;
     ptrDoiBong = nullptr; ngaySinh = 0;
@@ -32,7 +33,6 @@ void cauThu::update(const cauThu& thongTinMoi) {
     std::strncpy(maQuocGia, thongTinMoi.maQuocGia, 3); maQuocGia[3] = '\0';
 }
 
-// ==================== DOI BONG ====================
 doiBong::doiBong() {
     id = 0; soCauThu = 0; soTranThang = 0; soTranHoa = 0; soTranThua = 0; soBanThang = 0; soBanThua = 0;
     diemXepHang = 0; ngayThanhLap = 0; soCauThuHienTai = 0;
@@ -71,7 +71,6 @@ void doiBong::update(const doiBong& thongTinMoi) {
     ngayThanhLap = thongTinMoi.ngayThanhLap;
 }
 
-// ==================== TRAN DAU ====================
 tranDau::tranDau() {
     id = 0; maDoiBong1 = 0; maDoiBong2 = 0; soBanThangDoi1 = 0; soBanThangDoi2 = 0;
     soTheVangDoi1 = 0; soTheVangDoi2 = 0; ngayThiDau = 0;

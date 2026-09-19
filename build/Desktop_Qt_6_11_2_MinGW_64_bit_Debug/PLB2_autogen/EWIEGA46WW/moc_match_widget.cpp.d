@@ -445,6 +445,7 @@ D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB2_autogen/EWIEGA46WW/moc_m
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
+  D:/PBL2/CSDL.h \
   D:/PBL2/csdl.h \
   D:/PBL2/database.h \
   D:/PBL2/search_features.h \

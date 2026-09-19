@@ -3,7 +3,6 @@
 
 #include <stdexcept>
 #include <algorithm>
-// ==================== FORWARD DECLARATION ====================
 template <typename K>
 struct SecondaryIndex;
 
@@ -25,7 +24,6 @@ private:
         arr = newArr;
     }
 
-    // ✅ Generic sortData (cho T có field .id)
     void quickSortData(int low, int high) {
         if (low >= high) return;
         long long pivot = arr[high].id;
@@ -190,8 +188,7 @@ private:
     SecondaryIndex<K>* arr;
     int capacity;
     int currentSize;
-    long long nextId;  // ← Giữ cho consistency với generic version
-
+    long long nextId;  
     void resize(int newCapacity) {
         capacity = newCapacity;
         SecondaryIndex<K>* newArr = new SecondaryIndex<K>[capacity];
@@ -201,8 +198,6 @@ private:
         delete[] arr;
         arr = newArr;
     }
-
-    // ✅ KHÔNG CÓ sortData() - SecondaryIndex không có .id field
 
 public:
     MyVector() : arr(nullptr), capacity(0), currentSize(0), nextId(1) {}
@@ -236,13 +231,43 @@ public:
     }
 
     void insert_ordered(SecondaryIndex<K> value) {
-        // ✅ SecondaryIndex không cần auto-ID
-        // ✅ Chỉ allocate + thêm vào
         if (currentSize == capacity) {
-            int newCapacity = (capacity == 0) ? 1 : capacity * 2;
+            int newCapacity = (capacity == 0) ? 1 : (capacity > 100000 ? capacity + 50000 : capacity * 2);
             resize(newCapacity);
         }
-        arr[currentSize++] = value;
+
+        int low = 0, high = currentSize;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (arr[mid].key < value.key) low = mid + 1;
+            else high = mid;
+        }
+
+        for (int i = currentSize; i > low; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[low] = value;
+        currentSize++;
+    }
+    template <>
+    void insert_ordered(SecondaryIndex<const char*> value) {
+        if (currentSize == capacity) {
+            int newCapacity = (capacity == 0) ? 1 : (capacity > 100000 ? capacity + 50000 : capacity * 2);
+            resize(newCapacity);
+        }
+
+        int low = 0, high = currentSize;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            if (strcmp(arr[mid].key, value.key) < 0) low = mid + 1;
+            else high = mid;
+        }
+
+        for (int i = currentSize; i > low; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[low] = value;
+        currentSize++;
     }
 
     void insert_bulk(SecondaryIndex<K>* rawArray, int count) {

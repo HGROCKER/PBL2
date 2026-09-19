@@ -1,21 +1,19 @@
 #pragma once
 #ifndef DATABASE_H
 #define DATABASE_H
-
 #include "vector.h"
-#include "CSDL.h"
+#include "csdl.h"
 #include <iostream>
 #include <cstring>
-sdas
-// ==================== TEMPLATE INDEX TỔNG QUÁT ====================
-// ✅ FIX: Thay đổi 'id' → 'entityId' để nhất quán
+#include <string.h>
+using namespace std;
+
 template <typename K>
 struct SecondaryIndex {
     K key;
-    long long entityId;  // ✅ THAY ĐỔI: id → entityId
+    long long entityId; 
 };
 
-// ==================== TEMPLATE QUICKSORT ====================
 template <typename K>
 class IndexSorter {
 public:
@@ -26,63 +24,71 @@ public:
         for (int j = low; j < high; j++) {
             if (idxVec[j].key < pivot) {
                 i++;
-                std::swap(idxVec[i], idxVec[j]);
+                swap(idxVec[i], idxVec[j]);
             }
         }
-        std::swap(idxVec[i + 1], idxVec[high]);
+        swap(idxVec[i + 1], idxVec[high]);
         int pivotIndex = i + 1;
         sortNumeric(idxVec, low, pivotIndex - 1);
         sortNumeric(idxVec, pivotIndex + 1, high);
     }
 };
 
-// ✅ Specialization cho string (char*)
 template <>
-class IndexSorter<const char*> {
+class IndexSorter<const char* > {
 public:
     static void sortNumeric(MyVector<SecondaryIndex<const char*>>& idxVec, int low, int high) {
         if (low >= high) return;
         const char* pivot = idxVec[high].key;
         int i = low - 1;
         for (int j = low; j < high; j++) {
-            if (std::strcmp(idxVec[j].key, pivot) < 0) {
+            if (strcmp(idxVec[j].key, pivot) < 0) {
                 i++;
-                std::swap(idxVec[i], idxVec[j]);
+                swap(idxVec[i], idxVec[j]);
             }
         }
-        std::swap(idxVec[i + 1], idxVec[high]);
+        swap(idxVec[i + 1], idxVec[high]);
         int pivotIndex = i + 1;
         sortNumeric(idxVec, low, pivotIndex - 1);
         sortNumeric(idxVec, pivotIndex + 1, high);
     }
 };
 
-// ==================== HELPER FUNCTIONS (NGOÀI CLASS) ====================
-
-// ✅ Generic: Tìm vị trí index
 template <typename K>
 int findIndexPosition(MyVector<SecondaryIndex<K>>& idxVec, K key, long long entityId) {
-    for (int i = 0; i < idxVec.size(); i++) {
-        if (idxVec[i].key == key && idxVec[i].entityId == entityId) {  // ✅ entityId
-            return i;
+    int low = 0, high = idxVec.size() - 1;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        if (idxVec[mid].key == key && idxVec[mid].entityId == entityId) {
+            return mid;
+        }
+        if (idxVec[mid].key < key) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
         }
     }
     return -1;
 }
 
-// ✅ Specialization: Tìm vị trí cho const char*
 template <>
-int findIndexPosition<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec, 
-                                   const char* key, long long entityId) {
-    for (int i = 0; i < idxVec.size(); i++) {
-        if (std::strcmp(idxVec[i].key, key) == 0 && idxVec[i].entityId == entityId) {  // ✅ entityId
-            return i;
+int findIndexPosition<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec, const char* key, long long entityId) {
+    int low = 0, high = idxVec.size() - 1;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        int cmp = strcmp(idxVec[mid].key, key);
+        if (cmp == 0 && idxVec[mid].entityId == entityId) {
+            return mid;
+        }
+        if (cmp < 0) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
         }
     }
     return -1;
 }
 
-// ✅ Generic: Binary search
 template <typename K>
 int findFirstIndex(MyVector<SecondaryIndex<K>>& idxVec, K target) {
     int low = 0, high = idxVec.size() - 1;
@@ -101,15 +107,13 @@ int findFirstIndex(MyVector<SecondaryIndex<K>>& idxVec, K target) {
     return result;
 }
 
-// ✅ Specialization: Binary search cho const char*
 template <>
-int findFirstIndex<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec, 
-                                const char* target) {
+int findFirstIndex<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec, const char* target) {
     int low = 0, high = idxVec.size() - 1;
     int result = -1;
     while (low <= high) {
         int mid = low + (high - low) / 2;
-        int cmp = std::strcmp(idxVec[mid].key, target);
+        int cmp = strcmp(idxVec[mid].key, target);
         if (cmp == 0) {
             result = mid;
             high = mid - 1;
@@ -122,15 +126,11 @@ int findFirstIndex<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec,
     return result;
 }
 
-// ==================== DATABASE CLASS ====================
 class Database {
 public:
-    // --- KHO DỮ LIỆU CHÍNH ---
     MyVector<cauThu> dbCauThu;
     MyVector<doiBong> dbDoiBong;
     MyVector<tranDau> dbTranDau;
-
-    // --- CÁC MẢNG CHỈ MỤC PHỤ ---
     MyVector<SecondaryIndex<int>> indexCauThuTuoi;
     MyVector<SecondaryIndex<int>> indexCauThuMaDoiBong;
     MyVector<SecondaryIndex<const char*>> indexDoiBongDiaPhuong;
@@ -138,7 +138,6 @@ public:
 
     Database() {}
 
-    // ==================== XỬ LÝ CẦU THỦ ====================
     void insert_bulk_cauThu(cauThu* rawArray, int count) {
         if (count <= 0) return;
         
@@ -146,7 +145,6 @@ public:
             indexCauThuTuoi.push_back({ rawArray[i].getTuoi(), rawArray[i].id });
             indexCauThuMaDoiBong.push_back({ rawArray[i].getMaDoiBong(), rawArray[i].id });
         }
-        
         dbCauThu.insert_bulk(rawArray, count);
 
         if (indexCauThuTuoi.size() > 0) {
@@ -157,13 +155,9 @@ public:
 
     void insert_cauThu_single(const cauThu& ct) {
         dbCauThu.insert_ordered(ct);
-        indexCauThuTuoi.push_back({ ct.getTuoi(), ct.id });
-        indexCauThuMaDoiBong.push_back({ ct.getMaDoiBong(), ct.id });
-        
-        if (indexCauThuTuoi.size() > 0) {
-            IndexSorter<int>::sortNumeric(indexCauThuTuoi, 0, indexCauThuTuoi.size() - 1);
-            IndexSorter<int>::sortNumeric(indexCauThuMaDoiBong, 0, indexCauThuMaDoiBong.size() - 1);
-        }
+        indexCauThuTuoi.insert_ordered({ ct.getTuoi(), ct.id });
+        indexCauThuMaDoiBong.insert_ordered({ ct.getMaDoiBong(), ct.id });
+
     }
 
     void updateCauThuTuoi(long long id, int tuoiMoi) {
@@ -247,7 +241,6 @@ public:
         }
     }
 
-    // ==================== XỬ LÝ ĐỘI BÓNG ====================
     void insert_bulk_doiBong(doiBong* rawArray, int count) {
         if (count <= 0) return;
 
@@ -296,7 +289,6 @@ public:
         }
     }
 
-    // ==================== XỬ LÝ TRẬN ĐẤU ====================
     void insert_bulk_tranDau(tranDau* rawArray, int count) {
         if (count <= 0) return;
 
@@ -346,7 +338,6 @@ public:
         }
     }
 
-    // ==================== UTILITY ====================
     cauThu* getCauThuById(long long id) { return dbCauThu.find_by_id(id); }
     doiBong* getDoiBongById(long long id) { return dbDoiBong.find_by_id(id); }
     tranDau* getTranDauById(long long id) { return dbTranDau.find_by_id(id); }
@@ -359,5 +350,6 @@ public:
     int getDoiBongCount() const { return dbDoiBong.size(); }
     int getTranDauCount() const { return dbTranDau.size(); }
 };
+
 
 #endif
