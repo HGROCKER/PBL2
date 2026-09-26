@@ -1,7 +1,7 @@
 #include "csdl.h"
 #include <cstring>
+#include <string>
 #include <iostream>
-#include <string.h>
 using namespace std;
 
 cauThu::cauThu() {

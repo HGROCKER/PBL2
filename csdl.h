@@ -3,7 +3,7 @@
 #define CSDL_H
 
 #include <cstring>
-#include <string.h>
+#include <string>
 using namespace std;
 class Database;
 template <typename T> class MyVector; 

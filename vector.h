@@ -250,7 +250,7 @@ public:
         currentSize++;
     }
     template <>
-    void insert_ordered(SecondaryIndex<const char*> value) {
+    void insert_ordered(SecondaryIndex<string> value) {
         if (currentSize == capacity) {
             int newCapacity = (capacity == 0) ? 1 : (capacity > 100000 ? capacity + 50000 : capacity * 2);
             resize(newCapacity);
@@ -269,22 +269,6 @@ public:
         arr[low] = value;
         currentSize++;
     }
-
-    void insert_bulk(SecondaryIndex<K>* rawArray, int count) {
-        if (count <= 0) return;
-
-        if (currentSize + count > capacity) {
-            resize(currentSize + count);
-        }
-
-        for (int i = 0; i < count; i++) {
-            arr[currentSize + i] = rawArray[i];
-        }
-        currentSize += count;
-        // ✅ KHÔNG gọi sortData() 
-        // ✅ Sorting được làm bởi IndexSorter<K>::sortNumeric() từ database.h
-    }
-
     void push_back(SecondaryIndex<K> value) {
         if (currentSize == capacity) {
             int newCapacity = (capacity == 0) ? 1 : capacity * 2;
@@ -292,6 +276,21 @@ public:
         }
         arr[currentSize++] = value;
     }
+
+    void insert_bulk(SecondaryIndex<K>* rawArray, int count ) {
+        
+        if (count <= 0) return;
+        if (currentSize + count > capacity) {
+            resize(currentSize + count);
+        }
+        for (int i = 0; i < count; i++) {
+            arr[currentSize + i] = rawArray[i];
+        }
+        currentSize += count;
+        
+    }
+
+    
 
     // ✅ find_by_id không dùng cho SecondaryIndex
     SecondaryIndex<K>* find_by_id(long long targetId) {

@@ -5,7 +5,7 @@
 #include "csdl.h"
 #include <iostream>
 #include <cstring>
-#include <string.h>
+#include <string>
 using namespace std;
 
 template <typename K>
@@ -35,14 +35,14 @@ public:
 };
 
 template <>
-class IndexSorter<const char* > {
+class IndexSorter<string > {
 public:
-    static void sortNumeric(MyVector<SecondaryIndex<const char*>>& idxVec, int low, int high) {
+    static void sortNumeric(MyVector<SecondaryIndex<string>>& idxVec, int low, int high) {
         if (low >= high) return;
-        const char* pivot = idxVec[high].key;
+        string pivot = idxVec[high].key;
         int i = low - 1;
         for (int j = low; j < high; j++) {
-            if (strcmp(idxVec[j].key, pivot) < 0) {
+            if (idxVec[j].key < pivot) {
                 i++;
                 swap(idxVec[i], idxVec[j]);
             }
@@ -72,15 +72,14 @@ int findIndexPosition(MyVector<SecondaryIndex<K>>& idxVec, K key, long long enti
 }
 
 template <>
-int findIndexPosition<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec, const char* key, long long entityId) {
+int findIndexPosition<string>(MyVector<SecondaryIndex<string>>& idxVec, string key, long long entityId) {
     int low = 0, high = idxVec.size() - 1;
     while (low <= high) {
         int mid = low + (high - low) / 2;
-        int cmp = strcmp(idxVec[mid].key, key);
-        if (cmp == 0 && idxVec[mid].entityId == entityId) {
+        if (idxVec[mid].key == key && idxVec[mid].entityId == entityId) {
             return mid;
         }
-        if (cmp < 0) {
+        if (idxVec[mid].key < key) {
             low = mid + 1;
         } else {
             high = mid - 1;
@@ -108,16 +107,15 @@ int findFirstIndex(MyVector<SecondaryIndex<K>>& idxVec, K target) {
 }
 
 template <>
-int findFirstIndex<const char*>(MyVector<SecondaryIndex<const char*>>& idxVec, const char* target) {
+int findFirstIndex<string>(MyVector<SecondaryIndex<string>>& idxVec, string target) {
     int low = 0, high = idxVec.size() - 1;
     int result = -1;
     while (low <= high) {
         int mid = low + (high - low) / 2;
-        int cmp = strcmp(idxVec[mid].key, target);
-        if (cmp == 0) {
+        if (idxVec[mid].key ==  target) {
             result = mid;
             high = mid - 1;
-        } else if (cmp < 0) {
+        } else if (idxVec[mid].key < target) {
             low = mid + 1;
         } else {
             high = mid - 1;
@@ -133,14 +131,13 @@ public:
     MyVector<tranDau> dbTranDau;
     MyVector<SecondaryIndex<int>> indexCauThuTuoi;
     MyVector<SecondaryIndex<int>> indexCauThuMaDoiBong;
-    MyVector<SecondaryIndex<const char*>> indexDoiBongDiaPhuong;
+    MyVector<SecondaryIndex<string>> indexDoiBongDiaPhuong;
     MyVector<SecondaryIndex<long long>> indexTranDauNgay;
 
     Database() {}
 
     void insert_bulk_cauThu(cauThu* rawArray, int count) {
         if (count <= 0) return;
-        
         for (int i = 0; i < count; i++) {
             indexCauThuTuoi.push_back({ rawArray[i].getTuoi(), rawArray[i].id });
             indexCauThuMaDoiBong.push_back({ rawArray[i].getMaDoiBong(), rawArray[i].id });
@@ -157,7 +154,6 @@ public:
         dbCauThu.insert_ordered(ct);
         indexCauThuTuoi.insert_ordered({ ct.getTuoi(), ct.id });
         indexCauThuMaDoiBong.insert_ordered({ ct.getMaDoiBong(), ct.id });
-
     }
 
     void updateCauThuTuoi(long long id, int tuoiMoi) {
@@ -251,7 +247,7 @@ public:
         dbDoiBong.insert_bulk(rawArray, count);
 
         if (indexDoiBongDiaPhuong.size() > 0) {
-            IndexSorter<const char*>::sortNumeric(indexDoiBongDiaPhuong, 0, indexDoiBongDiaPhuong.size() - 1);
+            IndexSorter<string>::sortNumeric(indexDoiBongDiaPhuong, 0, indexDoiBongDiaPhuong.size() - 1);
         }
     }
 
@@ -260,7 +256,7 @@ public:
         indexDoiBongDiaPhuong.push_back({ db.getDiaPhuong(), db.id });
         
         if (indexDoiBongDiaPhuong.size() > 0) {
-            IndexSorter<const char*>::sortNumeric(indexDoiBongDiaPhuong, 0, indexDoiBongDiaPhuong.size() - 1);
+            IndexSorter<string>::sortNumeric(indexDoiBongDiaPhuong, 0, indexDoiBongDiaPhuong.size() - 1);
         }
     }
 
@@ -271,7 +267,7 @@ public:
         }
     }
 
-    void filter_doiBong_by_diaPhuong(const char* targetDiaPhuong) {
+    void filter_doiBong_by_diaPhuong(string targetDiaPhuong) {
         int firstIdx = findFirstIndex(indexDoiBongDiaPhuong, targetDiaPhuong);
         if (firstIdx == -1) {
             std::cout << "Khong tim thay doi bong o " << targetDiaPhuong << std::endl;
@@ -280,7 +276,7 @@ public:
 
         std::cout << "=== Doi bong o " << targetDiaPhuong << " ===\n";
         for (int i = firstIdx; i < indexDoiBongDiaPhuong.size(); i++) {
-            if (std::strcmp(indexDoiBongDiaPhuong[i].key, targetDiaPhuong) != 0) break;
+            if (indexDoiBongDiaPhuong[i].key != targetDiaPhuong) break;
             doiBong* db = dbDoiBong.find_by_id(indexDoiBongDiaPhuong[i].entityId);
             if (db) {
                 std::cout << "  ID: " << db->getId() << " | Ten: " << db->getTen() 
