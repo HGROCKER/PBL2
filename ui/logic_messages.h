@@ -9,6 +9,10 @@ inline QString logicErrorMessage(plb2::LogicError error) {
     switch (error) {
     case plb2::LogicError::InvalidName:
         return "Tên không được để trống.";
+    case plb2::LogicError::InvalidDocumentNumber:
+        return "Số CMND/hộ chiếu không được để trống.";
+    case plb2::LogicError::DuplicateDocumentNumber:
+        return "Số CMND/hộ chiếu này đã được sử dụng.";
     case plb2::LogicError::NotFound:
         return "Không tìm thấy dữ liệu cần cập nhật hoặc xóa.";
     case plb2::LogicError::DuplicateId:
@@ -17,6 +21,8 @@ inline QString logicErrorMessage(plb2::LogicError error) {
         return "Lịch thi đấu không hợp lệ: mỗi cặp đội chỉ đá một lần trên sân nhà.";
     case plb2::LogicError::CannotDelete:
         return "Không thể giải tán đội bóng. Đội có thể đang được sử dụng trong trận đấu.";
+    case plb2::LogicError::InvalidSampleData:
+        return "Dữ liệu mẫu V.League 2016 bị lỗi và không thể nạp.";
     case plb2::LogicError::None:
         break;
     }

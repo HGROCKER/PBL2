@@ -1,8 +1,8 @@
-# Install script for directory: D:/PBL2
+# Install script for directory: C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/PLB2")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/PBL2")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -52,6 +52,6 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-  file(WRITE "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

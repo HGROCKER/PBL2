@@ -421,34 +421,115 @@ PBL2_autogen/timestamp: \
 	C:/Qt/6.11.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake \
 	C:/Qt/6.11.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargetsPrecheck.cmake \
 	C:/Qt/6.11.2/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCCompiler.cmake.in \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCCompilerABI.c \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCInformation.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeMinGWFindMake.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCInformation.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystem.cmake.in \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckCXXCompilerFlag.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckCXXSourceCompiles.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckIncludeFile.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CheckLibraryExists.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Bruce-C-DetermineCompiler.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Compaq-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-C-DetermineCompiler.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/HP-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/LCC-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/SDCC-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/SunPro-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/XL-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/XLClang-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/zOS-C-DetermineCompiler.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindPackageMessage.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindThreads.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/FindVulkan.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/GNUInstallDirs.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckCompilerFlag.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckFlagCommonConfig.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake \
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-Determine-CXX.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake \
@@ -705,29 +786,29 @@ PBL2_autogen/timestamp: \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
-	D:/PBL2/CMakeLists.txt \
-	D:/PBL2/archive_storage.h \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/package-manager.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h \
-	D:/PBL2/core/application_logic.h \
-	D:/PBL2/csdl.cpp \
-	D:/PBL2/csdl.h \
-	D:/PBL2/database.h \
-	D:/PBL2/main.cpp \
-	D:/PBL2/main_window.cpp \
-	D:/PBL2/main_window.h \
-	D:/PBL2/match_widget.h \
-	D:/PBL2/player_widget.h \
-	D:/PBL2/search_features.h \
-	D:/PBL2/table_helpers.h \
-	D:/PBL2/team_widget.h \
-	D:/PBL2/tournament_widget.h \
-	D:/PBL2/ui/logic_messages.h \
-	D:/PBL2/vector.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/CMakeLists.txt \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/archive_storage.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/package-manager.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/core/application_logic.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/csdl.cpp \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/csdl.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/database.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/main.cpp \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/main_window.cpp \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/main_window.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/match_widget.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/player_widget.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/search_features.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/table_helpers.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/team_widget.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/tournament_widget.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/ui/logic_messages.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/vector.h \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

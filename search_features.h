@@ -3,8 +3,8 @@
 #define SEARCH_FEATURES_H
 
 #include <QString>
+#include <QDate>
 #include <QDateTime>
-#include <algorithm>
 #include <vector>
 #include <cmath>
 #include "csdl.h"
@@ -27,9 +27,34 @@ inline bool matchesRange(long long value, long long minV, long long maxV) {
     return true;
 }
 
+inline bool isValidRange(long long minV, long long maxV) {
+    return minV < 0 || maxV < 0 || minV <= maxV;
+}
+
+inline int calculateAge(int birthYear, int birthMonth, int birthDay,
+                        int currentYear, int currentMonth, int currentDay) {
+    int age = currentYear - birthYear;
+    if (currentMonth < birthMonth ||
+        (currentMonth == birthMonth && currentDay < birthDay)) {
+        --age;
+    }
+    return age;
+}
+
+inline int playerAgeAt(const cauThu& player, const QDate& asOfDate = QDate::currentDate()) {
+    if (player.getNgaySinh() <= 0) return player.getTuoi();
+
+    const QDate birthDate = QDateTime::fromSecsSinceEpoch(player.getNgaySinh()).date();
+    if (!birthDate.isValid() || birthDate > asOfDate) return -1;
+    return calculateAge(birthDate.year(), birthDate.month(), birthDate.day(),
+                        asOfDate.year(), asOfDate.month(), asOfDate.day());
+}
+
 struct PlayerSearchFilter {
+    long long playerId = -1;
     QString name;
     QString position;
+    QString documentNumber;
     int teamId = -1;
     int minAge = -1;
     int maxAge = -1;
@@ -42,6 +67,7 @@ struct PlayerSearchFilter {
 };
 
 struct TeamSearchFilter {
+    long long teamRecordId = -1;
     QString name;
     QString coach;
     QString location;
@@ -50,6 +76,7 @@ struct TeamSearchFilter {
 };
 
 struct MatchSearchFilter {
+    long long matchId = -1;
     int teamId = -1;
     long long fromDate = -1;
     long long toDate = -1;
@@ -59,9 +86,29 @@ struct MatchSearchFilter {
     int maxTotalGoals = -1;
 };
 
-// ==================== TỐI ƯU HÓA LỌC CẦU THỦ ====================
 inline std::vector<cauThu*> filterPlayers(Database& db, const PlayerSearchFilter& filter) {
     std::vector<cauThu*> result;
+
+    const auto matchesFilter = [&](const cauThu& player) {
+        if (filter.playerId >= 0 && player.getId() != filter.playerId) return false;
+        if (!matchesText(QString::fromStdString(player.getTen()), filter.name)) return false;
+        if (!matchesText(QString::fromStdString(player.getViTri()), filter.position)) return false;
+        if (!matchesText(QString::fromStdString(player.getSoGiayTo()), filter.documentNumber)) return false;
+        if (filter.minAge >= 0 || filter.maxAge >= 0) {
+            const int age = playerAgeAt(player);
+            if (age < 0 || !matchesRange(age, filter.minAge, filter.maxAge)) return false;
+        }
+        if (!matchesRange(player.getSoAo(), filter.minNumber, filter.maxNumber)) return false;
+        if (!matchesRange(player.getSoBanThang(), filter.minGoals, filter.maxGoals)) return false;
+        if (filter.minBirthYear >= 0 || filter.maxBirthYear >= 0) {
+            if (player.getNgaySinh() <= 0) return false;
+            const QDate birthDate = QDateTime::fromSecsSinceEpoch(player.getNgaySinh()).date();
+            if (!birthDate.isValid()) return false;
+            const int birthYear = birthDate.year();
+            if (!matchesRange(birthYear, filter.minBirthYear, filter.maxBirthYear)) return false;
+        }
+        return true;
+    };
 
     if (filter.teamId >= 0) {
         int startIndex = ::findFirstIndex(db.indexCauThuMaDoiBong, filter.teamId);
@@ -77,38 +124,7 @@ inline std::vector<cauThu*> filterPlayers(Database& db, const PlayerSearchFilter
                 if (!player) {
                     continue;
                 }
-
-                if (!matchesText(QString::fromStdString(player->getTen()), filter.name)) continue;
-                if (!matchesText(QString::fromStdString(player->getViTri()), filter.position)) continue;
-                if (!matchesRange(player->getTuoi(), filter.minAge, filter.maxAge)) continue;
-                if (!matchesRange(player->getSoAo(), filter.minNumber, filter.maxNumber)) continue;
-                if (!matchesRange(player->getSoBanThang(), filter.minGoals, filter.maxGoals)) continue;
-
-                result.push_back(player);
-            }
-        }
-    }
-    else if (filter.minAge >= 0) {
-        int startIndex = ::findFirstIndexAtOrAfter(db.indexCauThuTuoi, filter.minAge);
-        if (startIndex >= 0) {
-            int totalSize = db.indexCauThuTuoi.size();
-            for (int i = startIndex; i < totalSize; ++i) {
-                auto& idxRecord = db.indexCauThuTuoi[i];
-                if (filter.maxAge >= 0 && idxRecord.key > filter.maxAge) {
-                    break;
-                }
-
-                cauThu* player = db.getCauThuById(idxRecord.entityId);
-                if (!player) {
-                    continue;
-                }
-
-                if (!matchesText(QString::fromStdString(player->getTen()), filter.name)) continue;
-                if (!matchesText(QString::fromStdString(player->getViTri()), filter.position)) continue;
-                if (!matchesRange(player->getSoAo(), filter.minNumber, filter.maxNumber)) continue;
-                if (!matchesRange(player->getSoBanThang(), filter.minGoals, filter.maxGoals)) continue;
-
-                result.push_back(player);
+                if (matchesFilter(*player)) result.push_back(player);
             }
         }
     }
@@ -119,28 +135,12 @@ inline std::vector<cauThu*> filterPlayers(Database& db, const PlayerSearchFilter
             if (!player) {
                 continue;
             }
-
-            if (!matchesText(QString::fromStdString(player->getTen()), filter.name)) continue;
-            if (!matchesText(QString::fromStdString(player->getViTri()), filter.position)) continue;
-            if (!matchesRange(player->getTuoi(), filter.minAge, filter.maxAge)) continue;
-            if (!matchesRange(player->getSoAo(), filter.minNumber, filter.maxNumber)) continue;
-            if (!matchesRange(player->getSoBanThang(), filter.minGoals, filter.maxGoals)) continue;
-
-            result.push_back(player);
+            if (matchesFilter(*player)) result.push_back(player);
         }
-    }
-    if (filter.minBirthYear >= 0 || filter.maxBirthYear >= 0) {
-        result.erase(std::remove_if(result.begin(), result.end(), [&](const cauThu* player) {
-            if (!player || player->getNgaySinh() <= 0) return true;
-            const int year = QDateTime::fromSecsSinceEpoch(player->getNgaySinh()).date().year();
-            return (filter.minBirthYear >= 0 && year < filter.minBirthYear) ||
-                   (filter.maxBirthYear >= 0 && year > filter.maxBirthYear);
-        }), result.end());
     }
     return result;
 }
 
-// ==================== TỐI ƯU HÓA LỌC ĐỘI BÓNG ====================
 inline std::vector<doiBong*> filterTeams(Database& db, const plb2::TeamSearchFilter& filter) {
     std::vector<doiBong*> result;
     int totalCount = db.getDoiBongCount();
@@ -150,6 +150,7 @@ inline std::vector<doiBong*> filterTeams(Database& db, const plb2::TeamSearchFil
             continue;
         }
 
+        if (filter.teamRecordId >= 0 && team->getId() != filter.teamRecordId) continue;
         if (!plb2::matchesText(QString::fromStdString(team->getTen()), filter.name)) continue;
         if (!plb2::matchesText(QString::fromStdString(team->getHLV()), filter.coach)) continue;
         if (!plb2::matchesText(QString::fromStdString(team->getDiaPhuong()), filter.location)) continue;
@@ -160,9 +161,21 @@ inline std::vector<doiBong*> filterTeams(Database& db, const plb2::TeamSearchFil
     return result;
 }
 
-// ==================== TỐI ƯU HÓA LỌC TRẬN ĐẤU ====================
 inline std::vector<tranDau*> filterMatches(Database& db, const MatchSearchFilter& filter) {
     std::vector<tranDau*> result;
+
+    const auto matchesFilter = [&](const tranDau& match) {
+        if (filter.matchId >= 0 && match.getId() != filter.matchId) return false;
+        if (filter.teamId >= 0 &&
+            match.getMaDoiBong1() != filter.teamId &&
+            match.getMaDoiBong2() != filter.teamId) return false;
+        if (filter.fromDate >= 0 && match.getNgayThiDau() < filter.fromDate) return false;
+        if (filter.toDate >= 0 && match.getNgayThiDau() > filter.toDate) return false;
+        const int goalDifference = std::abs(match.getSoBanThangDoi1() - match.getSoBanThangDoi2());
+        if (!matchesRange(goalDifference, filter.minGoalDiff, filter.maxGoalDiff)) return false;
+        const int totalGoals = match.getSoBanThangDoi1() + match.getSoBanThangDoi2();
+        return matchesRange(totalGoals, filter.minTotalGoals, filter.maxTotalGoals);
+    };
 
     if (filter.fromDate >= 0) {
         int startIndex = ::findFirstIndexAtOrAfter(db.indexTranDauNgay, filter.fromDate);
@@ -178,16 +191,7 @@ inline std::vector<tranDau*> filterMatches(Database& db, const MatchSearchFilter
                 if (!match) {
                     continue;
                 }
-
-                if (filter.teamId >= 0 && match->getMaDoiBong1() != filter.teamId && match->getMaDoiBong2() != filter.teamId) continue;
-
-                int hieuSo = std::abs(match->getSoBanThangDoi1() - match->getSoBanThangDoi2());
-                if (!plb2::matchesRange(hieuSo, filter.minGoalDiff, filter.maxGoalDiff)) continue;
-
-                int tongBan = match->getSoBanThangDoi1() + match->getSoBanThangDoi2();
-                if (!plb2::matchesRange(tongBan, filter.minTotalGoals, filter.maxTotalGoals)) continue;
-
-                result.push_back(match);
+                if (matchesFilter(*match)) result.push_back(match);
             }
         }
     }
@@ -198,17 +202,7 @@ inline std::vector<tranDau*> filterMatches(Database& db, const MatchSearchFilter
             if (!match) {
                 continue;
             }
-
-            if (filter.teamId >= 0 && match->getMaDoiBong1() != filter.teamId && match->getMaDoiBong2() != filter.teamId) continue;
-            if (filter.toDate >= 0 && match->getNgayThiDau() > filter.toDate) continue;
-
-            int hieuSo = std::abs(match->getSoBanThangDoi1() - match->getSoBanThangDoi2());
-            if (!plb2::matchesRange(hieuSo, filter.minGoalDiff, filter.maxGoalDiff)) continue;
-
-            int tongBan = match->getSoBanThangDoi1() + match->getSoBanThangDoi2();
-            if (!plb2::matchesRange(tongBan, filter.minTotalGoals, filter.maxTotalGoals)) continue;
-
-            result.push_back(match);
+            if (matchesFilter(*match)) result.push_back(match);
         }
     }
     return result;

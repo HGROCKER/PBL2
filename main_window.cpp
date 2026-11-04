@@ -92,10 +92,17 @@ void MainWindow::onSaveDataFiles() {
 }
 
 void MainWindow::onLoadSampleData() {
-    if (QMessageBox::question(this, "Xác nhận nạp dữ liệu mẫu", "Thao tác này sẽ thay thế dữ liệu hiện có. Tiếp tục?", QMessageBox::Yes | QMessageBox::No) != QMessageBox::Yes) return;
-    const QDate today = QDate::currentDate();
-    const auto result = plb2::ApplicationLogic(db).loadSampleData(
-        today.year(), today.month(), today.day());
+    const QString message =
+        "Thao tác này sẽ thay thế dữ liệu hiện có.\n\n"
+        "Danh sách đội và 182 kết quả trận đấu năm 2016 được tổng hợp từ RSSSF. "
+        "Đội hình 18 cầu thủ mỗi đội là dữ liệu minh họa được tạo tự động; "
+        "huấn luyện viên và sân vận động chưa được xác minh. Tên Hà Nội đầu mùa "
+        "được gộp vào đội Sài Gòn sau khi đội đổi tên giữa mùa.\n\n"
+        "Nguồn: https://www.rsssf.org/tablesv/viet2016.html\n\n"
+        "Tiếp tục nạp dữ liệu mẫu?";
+    if (QMessageBox::question(this, "Xác nhận nạp dữ liệu mẫu", message,
+                              QMessageBox::Yes | QMessageBox::No) != QMessageBox::Yes) return;
+    const auto result = plb2::ApplicationLogic(db).loadSampleData();
     if (!result.succeeded()) {
         QMessageBox::warning(this, "Lỗi", logicErrorMessage(result.error));
         return;
@@ -105,10 +112,13 @@ void MainWindow::onLoadSampleData() {
 
 void MainWindow::onImportArchive() {
     const QString path = QFileDialog::getOpenFileName(
-        this, "Chọn tệp dữ liệu", QString(), "Kho lưu trữ PLB2 (*.txt)");
+        this, "Chọn tệp dữ liệu", QString(), "Kho lưu trữ PLB2 (*.json *.txt)");
     if (path.isEmpty()) return;
-    if (QFileInfo(path).suffix().compare("txt", Qt::CaseInsensitive) != 0) {
-        QMessageBox::warning(this, "Định dạng không được hỗ trợ", "Chỉ hỗ trợ tệp kho lưu trữ .txt.");
+    const QString importSuffix = QFileInfo(path).suffix();
+    if (importSuffix.compare("txt", Qt::CaseInsensitive) != 0 &&
+        importSuffix.compare("json", Qt::CaseInsensitive) != 0) {
+        QMessageBox::warning(this, "Định dạng không được hỗ trợ",
+                             "Chỉ hỗ trợ tệp kho lưu trữ .json hoặc .txt.");
         return;
     }
     if (QMessageBox::question(this, "Xác nhận nhập dữ liệu", "Nội dung tệp sẽ thay thế toàn bộ dữ liệu hiện tại. Tiếp tục?", QMessageBox::Yes | QMessageBox::No) != QMessageBox::Yes) return;
@@ -122,13 +132,15 @@ void MainWindow::onImportArchive() {
 
 void MainWindow::onExportArchive() {
     const QString path = QFileDialog::getSaveFileName(
-        this, "Lưu kho dữ liệu", QString(), "Kho lưu trữ PLB2 (*.txt)");
+        this, "Lưu kho dữ liệu", QString(), "Kho lưu trữ PLB2 (*.json *.txt)");
     if (path.isEmpty()) return;
     QString outputPath = path;
     if (QFileInfo(outputPath).suffix().isEmpty()) {
-        outputPath += ".txt";
-    } else if (QFileInfo(outputPath).suffix().compare("txt", Qt::CaseInsensitive) != 0) {
-        QMessageBox::warning(this, "Định dạng không được hỗ trợ", "Chỉ hỗ trợ xuất kho lưu trữ .txt.");
+        outputPath += ".json";
+    } else if (QFileInfo(outputPath).suffix().compare("txt", Qt::CaseInsensitive) != 0 &&
+               QFileInfo(outputPath).suffix().compare("json", Qt::CaseInsensitive) != 0) {
+        QMessageBox::warning(this, "Định dạng không được hỗ trợ",
+                             "Chỉ hỗ trợ xuất kho lưu trữ .json hoặc .txt.");
         return;
     }
     std::string error;

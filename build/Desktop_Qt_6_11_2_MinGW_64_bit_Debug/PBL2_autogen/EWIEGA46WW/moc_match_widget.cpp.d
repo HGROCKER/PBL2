@@ -1,5 +1,5 @@
-D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_match_widget.cpp: D:/PBL2/match_widget.h \
-  D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h \
+C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_match_widget.cpp: C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/match_widget.h \
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/QDate \
   C:/Qt/6.11.2/mingw_64/include/QtCore/QDateTime \
   C:/Qt/6.11.2/mingw_64/include/QtCore/QString \
@@ -478,10 +478,10 @@ D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_m
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
-  D:/PBL2/core/application_logic.h \
-  D:/PBL2/csdl.h \
-  D:/PBL2/database.h \
-  D:/PBL2/search_features.h \
-  D:/PBL2/table_helpers.h \
-  D:/PBL2/ui/logic_messages.h \
-  D:/PBL2/vector.h
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/core/application_logic.h \
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/csdl.h \
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/database.h \
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/search_features.h \
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/table_helpers.h \
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/ui/logic_messages.h \
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/vector.h

@@ -44,6 +44,7 @@ private:
 
     // Thành phần Layer 1 (List & Search)
     QTableWidget *matchTable;
+    QLineEdit *searchMatchIdInput;
     QComboBox *searchTeamCombo;
     QComboBox *searchDateModeCombo;
     QDateEdit *searchFromDateInput, *searchToDateInput;
@@ -84,6 +85,9 @@ private:
         searchBtnLayout->addWidget(clearSearchBtn);
         searchLayout->addLayout(searchBtnLayout);
         QFormLayout *filterForm = new QFormLayout();
+        searchMatchIdInput = new QLineEdit();
+        searchMatchIdInput->setPlaceholderText("Nhập ID chính xác");
+        filterForm->addRow("ID trận:", searchMatchIdInput);
         searchTeamCombo = new QComboBox();
         searchTeamCombo->addItem("Tất cả các đội", -1);
         for (int i = 0; i < db->getDoiBongCount(); ++i)
@@ -457,12 +461,13 @@ public slots:
             QMessageBox::warning(this, "Lỗi", logicErrorMessage(result.error));
             return;
         }
-        statusLabel->setText(!result.persisted
-                                 ? "Dữ liệu đã đổi trong bộ nhớ nhưng chưa ghi đầy đủ ra tệp."
-                                 : (isEditMode ? "✓ Cập nhật trận đấu thành công!"
-                                               : "✓ Ghi nhận biên bản trận đấu mới thành công!"));
-        if (!result.persisted)
-            QMessageBox::warning(this, "Lỗi lưu dữ liệu", QString::fromStdString(result.persistenceError));
+        statusLabel->setText(isEditMode
+                                 ? "Đã cập nhật trong bộ nhớ. Chọn File > Lưu tệp dữ liệu để lưu bền vững."
+                                 : "Đã thêm trong bộ nhớ. Chọn File > Lưu tệp dữ liệu để lưu bền vững.");
+        if (!result.logged)
+            QMessageBox::warning(this, "Lỗi ghi nhật ký",
+                                 "Dữ liệu đã đổi trong bộ nhớ nhưng không ghi được nhật ký: " +
+                                     QString::fromStdString(result.logError));
         refreshTable();
         stackedWidget->setCurrentIndex(0); // Tự động thu hồi về layer danh sách
     }
@@ -479,11 +484,12 @@ public slots:
                 QMessageBox::warning(this, "Lỗi", logicErrorMessage(result.error));
                 return;
             }
-            if (!result.persisted)
-                QMessageBox::warning(this, "Lỗi lưu dữ liệu", QString::fromStdString(result.persistenceError));
+            if (!result.logged)
+                QMessageBox::warning(this, "Lỗi ghi nhật ký",
+                                     "Dữ liệu đã đổi trong bộ nhớ nhưng không ghi được nhật ký: " +
+                                         QString::fromStdString(result.logError));
             refreshTable();
-            statusLabel->setText(result.persisted ? "✓ Đã xóa biên bản trận đấu thành công!" :
-                                 "Đã xóa trong bộ nhớ nhưng chưa ghi đầy đủ ra tệp.");
+            statusLabel->setText("Đã xóa trong bộ nhớ. Chọn File > Lưu tệp dữ liệu để lưu bền vững.");
             stackedWidget->setCurrentIndex(0);
         }
     }
@@ -493,18 +499,38 @@ public slots:
     }
     void onApplySearch()
     {
-        const auto filter = logic.matchSearchFilter(
+        long long matchId = -1;
+        const QString idText = searchMatchIdInput->text().trimmed();
+        if (!idText.isEmpty()) {
+            bool validId = false;
+            matchId = idText.toLongLong(&validId);
+            if (!validId || matchId <= 0) {
+                QMessageBox::warning(this, "ID không hợp lệ",
+                                     "ID trận đấu phải là số nguyên dương.");
+                return;
+            }
+        }
+        if (!plb2::isValidRange(searchMinGoalDiff->value(), searchMaxGoalDiff->value()) ||
+            !plb2::isValidRange(searchMinTotalGoals->value(), searchMaxTotalGoals->value())) {
+            QMessageBox::warning(this, "Khoảng lọc không hợp lệ",
+                                 "Giá trị Từ không được lớn hơn giá trị Đến.");
+            return;
+        }
+
+        auto filter = logic.matchSearchFilter(
             searchTeamCombo->currentData().toInt(), searchMinGoalDiff->value(),
             searchMaxGoalDiff->value(), searchMinTotalGoals->value(),
             searchMaxTotalGoals->value(),
             static_cast<plb2::MatchDateMode>(searchDateModeCombo->currentData().toInt()),
             searchFromDateInput->date(), searchToDateInput->date());
+        filter.matchId = matchId;
         const auto matches = logic.findMatches(filter);
         renderMatchRows(matches);
         statusLabel->setText(QString("✓ Bộ lọc tìm thấy %1 trận thích hợp").arg(matches.size()));
     }
     void onClearSearch()
     {
+        searchMatchIdInput->clear();
         searchTeamCombo->setCurrentIndex(0);
         searchDateModeCombo->setCurrentIndex(0);
         searchFromDateInput->setDate(QDate::currentDate());
@@ -539,6 +565,7 @@ public:
         connect(deleteBtn, &QPushButton::clicked, this, &MatchWidget::onDeleteMatch);
         connect(searchBtn, &QPushButton::clicked, this, &MatchWidget::onApplySearch);
         connect(clearSearchBtn, &QPushButton::clicked, this, &MatchWidget::onClearSearch);
+        connect(searchMatchIdInput, &QLineEdit::returnPressed, this, &MatchWidget::onApplySearch);
         enableThreeStateSorting(matchTable, [this]() { onApplySearch(); },
                                 [this](const QString& status) { statusLabel->setText(status); });
         refreshTable();

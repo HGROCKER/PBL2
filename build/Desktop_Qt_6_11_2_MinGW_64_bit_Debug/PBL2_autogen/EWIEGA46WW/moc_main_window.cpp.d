@@ -1,5 +1,5 @@
-D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_main_window.cpp: D:/PBL2/main_window.h \
-  D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h \
+C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_main_window.cpp: C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/main_window.h \
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/q20bit.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/q20functional.h \
@@ -409,6 +409,6 @@ D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_m
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
-  D:/PBL2/csdl.h \
-  D:/PBL2/database.h \
-  D:/PBL2/vector.h
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/csdl.h \
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/database.h \
+  C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/vector.h

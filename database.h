@@ -3,7 +3,9 @@
 #define DATABASE_H
 #include "vector.h"
 #include "csdl.h"
+#include <algorithm>
 #include <cstring>
+#include <cctype>
 #include <string>
 #include <fstream>
 #include <iomanip>
@@ -11,29 +13,8 @@
 #include <vector>
 #include <set>
 #include <filesystem>
-#include <chrono>
 #include <ctime>
 using namespace std;
-
-template <typename K>
-class IndexSorter {
-public:
-    static void sortNumeric(MyVector<SecondaryIndex<K>>& idxVec, int low, int high) {
-        if (low >= high) return;
-        K pivot = idxVec[high].key;
-        int i = low - 1;
-        for (int j = low; j < high; j++) {
-            if (idxVec[j].key < pivot) {
-                i++;
-                swap(idxVec[i], idxVec[j]);
-            }
-        }
-        swap(idxVec[i + 1], idxVec[high]);
-        int pivotIndex = i + 1;
-        sortNumeric(idxVec, low, pivotIndex - 1);
-        sortNumeric(idxVec, pivotIndex + 1, high);
-    }
-};
 
 template <typename K>
 int findIndexPosition(MyVector<SecondaryIndex<K>>& idxVec, K key, long long entityId) {
@@ -87,6 +68,21 @@ private:
     std::string dataDirectory = "data";
     inline static const std::string dataDirectoryCache = "cache";
 
+    static std::string normalizeDocumentNumber(std::string value) {
+        const auto first = std::find_if_not(value.begin(), value.end(), [](unsigned char ch) {
+            return std::isspace(ch) != 0;
+        });
+        const auto last = std::find_if_not(value.rbegin(), value.rend(), [](unsigned char ch) {
+            return std::isspace(ch) != 0;
+        }).base();
+        if (first >= last) return {};
+        value = std::string(first, last);
+        std::transform(value.begin(), value.end(), value.begin(), [](unsigned char ch) {
+            return static_cast<char>(std::toupper(ch));
+        });
+        return value;
+    }
+
 public:
     struct TeamStanding {
         long long teamId;
@@ -103,9 +99,7 @@ public:
     MyVector<cauThu> dbCauThu;
     MyVector<doiBong> dbDoiBong;
     MyVector<tranDau> dbTranDau;
-    MyVector<SecondaryIndex<int>> indexCauThuTuoi;
     MyVector<SecondaryIndex<int>> indexCauThuMaDoiBong;
-    MyVector<SecondaryIndex<string>> indexDoiBongDiaPhuong;
     MyVector<SecondaryIndex<long long>> indexTranDauNgay;
 
     Database() {
@@ -156,6 +150,13 @@ public:
             line >> std::ws;
             return line.eof();
         };
+        auto isCommentOrBlank = [](const std::string& value) {
+            const auto first = value.find_first_not_of(" \t\r\n");
+            return first == std::string::npos || value[first] == '#';
+        };
+        auto isSchemaHeader = [](const std::string& value, const char* header) {
+            return value.compare(0, std::char_traits<char>::length(header), header) == 0;
+        };
 
         std::ifstream playerFile;
         if (!openInput(dataPath("data_cauthu.txt"), playerFile)) return false;
@@ -163,13 +164,14 @@ public:
         int lineNumber = 0;
         while (std::getline(playerFile, text)) {
             ++lineNumber;
-            if (text.empty()) continue;
+            if (isCommentOrBlank(text) ||
+                isSchemaHeader(text, "id name position age ")) continue;
             std::istringstream line(text);
             long long id;
             long long birthDate = 0;
             int age, shirt, goals, teamId;
             int appearances = 0, phone = 0, height = 0, weight = 0;
-            std::string name, position, nationality, imagePath;
+            std::string name, position, nationality, imagePath, documentNumber;
             if (!(line >> id >> std::quoted(name) >> std::quoted(position) >> age >> shirt >> goals
                        >> std::quoted(nationality) >> teamId)) {
                 error = "Dữ liệu cầu thủ không hợp lệ tại data_cauthu.txt, dòng " + std::to_string(lineNumber);
@@ -185,8 +187,14 @@ public:
                 } else if (line.peek() == 'V') {
                     std::string marker;
                     line >> marker;
-                    if (marker != "V2" ||
-                        !(line >> appearances >> phone >> birthDate >> height >> weight >> std::quoted(imagePath))) {
+                    if (marker == "V3") {
+                        if (!(line >> std::quoted(documentNumber) >> appearances >> phone >> birthDate
+                                  >> height >> weight >> std::quoted(imagePath))) {
+                            error = "Dữ liệu cầu thủ không hợp lệ tại data_cauthu.txt, dòng " + std::to_string(lineNumber);
+                            return false;
+                        }
+                    } else if (marker != "V2" ||
+                               !(line >> appearances >> phone >> birthDate >> height >> weight >> std::quoted(imagePath))) {
                         error = "Dữ liệu cầu thủ không hợp lệ tại data_cauthu.txt, dòng " + std::to_string(lineNumber);
                         return false;
                     }
@@ -207,6 +215,7 @@ public:
             cauThu player(id, name.c_str(), position.c_str(), age, shirt, teamId);
             player.setSoBanThang(goals);
             player.setMaQuocGia(nationality.c_str());
+            player.setSoGiayTo(documentNumber);
             player.setImagePath(imagePath);
             player.soTranChoi = appearances;
             player.sdt = phone;
@@ -225,7 +234,8 @@ public:
         lineNumber = 0;
         while (std::getline(teamFile, text)) {
             ++lineNumber;
-            if (text.empty()) continue;
+            if (isCommentOrBlank(text) ||
+                isSchemaHeader(text, "id name coach location ")) continue;
             std::istringstream line(text);
             long long id, foundationDate = 0;
             int points, playerCount = 0, wins = 0, draws = 0, losses = 0;
@@ -294,7 +304,8 @@ public:
         lineNumber = 0;
         while (std::getline(matchFile, text)) {
             ++lineNumber;
-            if (text.empty()) continue;
+            if (isCommentOrBlank(text) ||
+                isSchemaHeader(text, "id homeTeamId awayTeamId ")) continue;
             std::istringstream line(text);
             long long id, date;
             int team1, team2, goals1, goals2, cards1, cards2;
@@ -319,13 +330,11 @@ public:
         dbCauThu.clear();
         dbDoiBong.clear();
         dbTranDau.clear();
-        indexCauThuTuoi.clear();
         indexCauThuMaDoiBong.clear();
-        indexDoiBongDiaPhuong.clear();
         indexTranDauNgay.clear();
         for (const cauThu& player : players) {
             if (!insert_cauThu_single(player)) {
-                error = "Không thể nạp dữ liệu cầu thủ do ID bị trùng.";
+                error = "Không thể nạp dữ liệu cầu thủ do ID hoặc số CMND/hộ chiếu bị trùng.";
                 return false;
             }
         }
@@ -358,13 +367,16 @@ public:
             error = "Không thể ghi data_cauthu.txt";
             return false;
         }
+        playerFile << "# id name position age shirt goals nationality teamId "
+                      "documentNumber appearances phone birthDateUnix heightCm weightKg imagePath\n";
         for (int i = 0; i < dbCauThu.size(); ++i) {
             const cauThu& player = dbCauThu[i];
             playerFile << player.getId() << ' ' << std::quoted(player.getTen()) << ' '
                        << std::quoted(player.getViTri()) << ' ' << player.getTuoi() << ' '
                        << player.getSoAo() << ' ' << player.getSoBanThang() << ' '
                        << std::quoted(player.getMaQuocGia()) << ' ' << player.getMaDoiBong()
-                       << " V2 " << player.soTranChoi << ' ' << player.sdt << ' ' << player.ngaySinh
+                       << " V3 " << std::quoted(player.getSoGiayTo()) << ' '
+                       << player.soTranChoi << ' ' << player.sdt << ' ' << player.ngaySinh
                        << ' ' << player.chieuCao << ' ' << player.canNang
                        << ' ' << std::quoted(player.getImagePath()) << '\n';
         }
@@ -379,6 +391,9 @@ public:
             error = "Không thể ghi data_doibong.txt";
             return false;
         }
+        teamFile << "# id name coach location savedRankingPoints playerCount "
+                    "wins draws losses goalsFor goalsAgainst nationality rosterSize "
+                    "foundationDateUnix imagePath\n";
         for (int i = 0; i < dbDoiBong.size(); ++i) {
             const doiBong& team = dbDoiBong[i];
             teamFile << team.getId() << ' ' << std::quoted(team.getTen()) << ' '
@@ -400,6 +415,8 @@ public:
             error = "Không thể ghi data_trandau.txt";
             return false;
         }
+        matchFile << "# id homeTeamId awayTeamId homeGoals awayGoals "
+                     "matchDateUnix homeYellowCards awayYellowCards stadium\n";
         for (int i = 0; i < dbTranDau.size(); ++i) {
             const tranDau& match = dbTranDau[i];
             matchFile << match.getId() << ' ' << match.getMaDoiBong1() << ' '
@@ -435,9 +452,6 @@ public:
             return false;
         }
         return true;
-
-
-        return true;
     }
 
         bool persistAndLog(const std::string& action, const std::string& entity, long long id, std::string& error) const {
@@ -446,7 +460,7 @@ public:
         std::filesystem::create_directories(dataDirectoryCache, ec);
         std::ofstream logFile(std::filesystem::path(dataDirectoryCache) / "data_log.txt", std::ios::app);
         if (!logFile) {
-            error = "Đã ghi dữ liệu nhưng không thể mở data_log.txt trong cache.";
+            error = "Không thể mở data_log.txt trong cache.";
             return false;
         }
         const std::time_t now = std::time(nullptr);
@@ -455,7 +469,7 @@ public:
         else logFile << now;
         logFile << ' ' << std::quoted(action) << ' ' << std::quoted(entity) << ' ' << id << '\n';
         if (!logFile) {
-            error = "Đã ghi dữ liệu nhưng xảy ra lỗi khi cập nhật cache nhật ký.";
+            error = "Xảy ra lỗi khi cập nhật cache nhật ký.";
             return false;
         }
         return true;
@@ -466,9 +480,7 @@ public:
         dbCauThu.clear();
         dbDoiBong.clear();
         dbTranDau.clear();
-        indexCauThuTuoi.clear();
         indexCauThuMaDoiBong.clear();
-        indexDoiBongDiaPhuong.clear();
         indexTranDauNgay.clear();
         for (int i = 0; i < source.getCauThuCount(); ++i)
             if (!insert_cauThu_single(*source.getCauThuAt(i))) return false;
@@ -578,30 +590,38 @@ public:
         return true;
     }
 
+    bool hasPlayerDocumentNumber(const std::string& documentNumber,
+                                 long long excludedPlayerId = -1) const {
+        const std::string normalized = normalizeDocumentNumber(documentNumber);
+        if (normalized.empty()) return false;
+        for (int i = 0; i < dbCauThu.size(); ++i) {
+            const cauThu& player = dbCauThu[i];
+            if (player.getId() != excludedPlayerId &&
+                normalizeDocumentNumber(player.getSoGiayTo()) == normalized) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     bool insert_cauThu_single(const cauThu& ct) {
         cauThu value = ct;
         if (value.id <= 0) value.id = dbCauThu.getNextId();
-        if (dbCauThu.find_by_id(value.id)) return false;
+        if (dbCauThu.find_by_id(value.id) ||
+            hasPlayerDocumentNumber(value.getSoGiayTo())) return false;
 
         dbCauThu.insert_ordered(value);
-        indexCauThuTuoi.insert_ordered({ value.getTuoi(), value.id });
         indexCauThuMaDoiBong.insert_ordered({ value.getMaDoiBong(), value.id });
         return true;
     }
 
     bool updateCauThu(long long id, const cauThu& thongTinMoi) {
         cauThu* ct = dbCauThu.find_by_id(id);
-        if (!ct) return false;
+        if (!ct || hasPlayerDocumentNumber(thongTinMoi.getSoGiayTo(), id)) return false;
 
-        const int tuoiCu = ct->getTuoi();
         const int doiBongCu = ct->getMaDoiBong();
         ct->update(thongTinMoi);
 
-        if (tuoiCu != ct->getTuoi()) {
-            int pos = findIndexPosition(indexCauThuTuoi, tuoiCu, id);
-            if (pos != -1) indexCauThuTuoi.delete_by_index(pos);
-            indexCauThuTuoi.insert_ordered({ ct->getTuoi(), id });
-        }
         if (doiBongCu != ct->getMaDoiBong()) {
             int pos = findIndexPosition(indexCauThuMaDoiBong, doiBongCu, id);
             if (pos != -1) indexCauThuMaDoiBong.delete_by_index(pos);
@@ -614,30 +634,9 @@ public:
         cauThu* ct = dbCauThu.find_by_id(id);
         if (!ct) return false;
 
-        int pos = findIndexPosition(indexCauThuTuoi, ct->getTuoi(), id);
-        if (pos != -1) indexCauThuTuoi.delete_by_index(pos);
-        pos = findIndexPosition(indexCauThuMaDoiBong, ct->getMaDoiBong(), id);
+        int pos = findIndexPosition(indexCauThuMaDoiBong, ct->getMaDoiBong(), id);
         if (pos != -1) indexCauThuMaDoiBong.delete_by_index(pos);
         return dbCauThu.delete_by_id(id);
-    }
-
-    void updateCauThuTuoi(long long id, int tuoiMoi) {
-        cauThu* ct = dbCauThu.find_by_id(id);
-        if (!ct) return;
-
-        int tuoCu = ct->getTuoi();
-        
-        int pos = findIndexPosition(indexCauThuTuoi, tuoCu, id);
-        if (pos != -1) {
-            indexCauThuTuoi.delete_by_index(pos);
-        }
-
-        ct->setTuoi(tuoiMoi);
-        indexCauThuTuoi.push_back({ tuoiMoi, id });
-        
-        if (indexCauThuTuoi.size() > 0) {
-            IndexSorter<int>::sortNumeric(indexCauThuTuoi, 0, indexCauThuTuoi.size() - 1);
-        }
     }
 
     void updateCauThuMaDoiBong(long long id, int maDoiBongMoi) {
@@ -652,18 +651,7 @@ public:
         }
 
         ct->setMaDoiBong(maDoiBongMoi);
-        indexCauThuMaDoiBong.push_back({ maDoiBongMoi, id });
-        
-        if (indexCauThuMaDoiBong.size() > 0) {
-            IndexSorter<int>::sortNumeric(indexCauThuMaDoiBong, 0, indexCauThuMaDoiBong.size() - 1);
-        }
-    }
-
-    void updateCauThuBanThang(long long id, int soBanThangMoi) {
-        cauThu* ct = dbCauThu.find_by_id(id);
-        if (ct) {
-            ct->setSoBanThang(soBanThangMoi);
-        }
+        indexCauThuMaDoiBong.insert_ordered({ maDoiBongMoi, id });
     }
 
     bool insert_doiBong_single(const doiBong& db) {
@@ -672,7 +660,6 @@ public:
         if (dbDoiBong.find_by_id(value.id)) return false;
 
         dbDoiBong.insert_ordered(value);
-        indexDoiBongDiaPhuong.insert_ordered({ value.getDiaPhuong(), value.id });
         return true;
     }
 
@@ -680,14 +667,8 @@ public:
         doiBong* team = dbDoiBong.find_by_id(id);
         if (!team) return false;
 
-        const string diaPhuongCu = team->getDiaPhuong();
         team->update(thongTinMoi);
         team->id = id;
-        if (diaPhuongCu != team->getDiaPhuong()) {
-            int pos = findIndexPosition(indexDoiBongDiaPhuong, diaPhuongCu, id);
-            if (pos != -1) indexDoiBongDiaPhuong.delete_by_index(pos);
-            indexDoiBongDiaPhuong.insert_ordered({ team->getDiaPhuong(), id });
-        }
         return true;
     }
 
@@ -704,17 +685,7 @@ public:
                 updateCauThuMaDoiBong(dbCauThu[i].getId(), -1);
         }
 
-        doiBong* team = dbDoiBong.find_by_id(id);
-        int pos = findIndexPosition(indexDoiBongDiaPhuong, team->getDiaPhuong(), id);
-        if (pos != -1) indexDoiBongDiaPhuong.delete_by_index(pos);
         return dbDoiBong.delete_by_id(id);
-    }
-
-    void updateDoiBongDiemXepHang(long long id, int diemMoi) {
-        doiBong* db = dbDoiBong.find_by_id(id);
-        if (db) {
-            db->setDiemXepHang(diemMoi);
-        }
     }
 
     bool insert_tranDau_single(const tranDau& td) {
@@ -750,60 +721,6 @@ public:
         if (pos != -1) indexTranDauNgay.delete_by_index(pos);
         return dbTranDau.delete_by_id(id);
     }
-    void insert_bulk_cauThu(cauThu* rawArray, int count) {
-        if (!rawArray || count <= 0) return;
-
-        // 1. Nạp vào CSDL chính trước để sinh ID thực tế cho rawArray
-        dbCauThu.insert_bulk(rawArray, count);
-
-        // 2. Chạy vòng lặp lấy ID đã được cấp nạp vào Index
-        for (int i = 0; i < count; i++) {
-            indexCauThuTuoi.push_back({ rawArray[i].getTuoi(), rawArray[i].id });
-            indexCauThuMaDoiBong.push_back({ rawArray[i].getMaDoiBong(), rawArray[i].id });
-        }
-
-        if (indexCauThuTuoi.size() > 0) {
-            IndexSorter<int>::sortNumeric(indexCauThuTuoi, 0, indexCauThuTuoi.size() - 1);
-            IndexSorter<int>::sortNumeric(indexCauThuMaDoiBong, 0, indexCauThuMaDoiBong.size() - 1);
-        }
-    }
-
-    void insert_bulk_doiBong(doiBong* rawArray, int count) {
-        if (!rawArray || count <= 0) return;
-
-        dbDoiBong.insert_bulk(rawArray, count); // Chuyển lên trên
-
-        for (int i = 0; i < count; i++) {
-            indexDoiBongDiaPhuong.push_back({ rawArray[i].getDiaPhuong(), rawArray[i].id });
-        }
-
-        if (indexDoiBongDiaPhuong.size() > 0) {
-            IndexSorter<string>::sortNumeric(indexDoiBongDiaPhuong, 0, indexDoiBongDiaPhuong.size() - 1);
-        }
-    }
-
-    void insert_bulk_tranDau(tranDau* rawArray, int count) {
-        if (!rawArray || count <= 0) return;
-
-        dbTranDau.insert_bulk(rawArray, count);
-
-        for (int i = 0; i < count; i++) {
-            indexTranDauNgay.push_back({ rawArray[i].getNgayThiDau(), rawArray[i].id });
-        }
-
-        if (indexTranDauNgay.size() > 0) {
-            IndexSorter<long long>::sortNumeric(indexTranDauNgay, 0, indexTranDauNgay.size() - 1);
-        }
-    }
-
-    void updateTranDauBanThang(long long id, int banDoi1Moi, int banDoi2Moi) {
-        tranDau* td = dbTranDau.find_by_id(id);
-        if (td) {
-            td->setSoBanThangDoi1(banDoi1Moi);
-            td->setSoBanThangDoi2(banDoi2Moi);
-        }
-    }
-
     cauThu* getCauThuById(long long id) { return dbCauThu.find_by_id(id); }
     doiBong* getDoiBongById(long long id) { return dbDoiBong.find_by_id(id); }
     tranDau* getTranDauById(long long id) { return dbTranDau.find_by_id(id); }
