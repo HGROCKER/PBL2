@@ -40,12 +40,12 @@ template <> constexpr inline auto TournamentWidget::qt_create_metaobjectdata<qt_
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "TournamentWidget",
-        "onGenerateBracket",
+        "refreshStandings",
         ""
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'onGenerateBracket'
+        // Slot 'refreshStandings'
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
@@ -70,7 +70,7 @@ void TournamentWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
     auto *_t = static_cast<TournamentWidget *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->onGenerateBracket(); break;
+        case 0: _t->refreshStandings(); break;
         default: ;
         }
     }

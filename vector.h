@@ -1,10 +1,13 @@
 #ifndef MY_VECTOR_H
 #define MY_VECTOR_H
-
 #include <stdexcept>
 #include <algorithm>
+#include <string>
 template <typename K>
-struct SecondaryIndex;
+struct SecondaryIndex{
+    K key;
+    long long entityId;
+};
 
 template <typename T>
 class MyVector {
@@ -42,7 +45,7 @@ private:
 
     void sortData() {
         if (currentSize <= 1) return;
-        quickSortData(0, currentSize - 1); // ✅ Thay thế Bubble Sort O(N^2) cũ
+        quickSortData(0, currentSize - 1); 
     }
 
 public:
@@ -249,26 +252,7 @@ public:
         arr[low] = value;
         currentSize++;
     }
-    template <>
-    void insert_ordered(SecondaryIndex<string> value) {
-        if (currentSize == capacity) {
-            int newCapacity = (capacity == 0) ? 1 : (capacity > 100000 ? capacity + 50000 : capacity * 2);
-            resize(newCapacity);
-        }
 
-        int low = 0, high = currentSize;
-        while (low < high) {
-            int mid = low + (high - low) / 2;
-            if (strcmp(arr[mid].key, value.key) < 0) low = mid + 1;
-            else high = mid;
-        }
-
-        for (int i = currentSize; i > low; i--) {
-            arr[i] = arr[i - 1];
-        }
-        arr[low] = value;
-        currentSize++;
-    }
     void push_back(SecondaryIndex<K> value) {
         if (currentSize == capacity) {
             int newCapacity = (capacity == 0) ? 1 : capacity * 2;
@@ -290,15 +274,6 @@ public:
         
     }
 
-    
-
-    // ✅ find_by_id không dùng cho SecondaryIndex
-    SecondaryIndex<K>* find_by_id(long long targetId) {
-        // ❌ SecondaryIndex không có .id field
-        // ✅ Không implement - dùng manual loop hoặc IndexSorter thay thế
-        return nullptr;
-    }
-
     bool delete_by_index(int index) {
         if (index < 0 || index >= currentSize) return false;
         for (int i = index; i < currentSize - 1; i++) {
@@ -308,11 +283,6 @@ public:
         return true;
     }
 
-    bool delete_by_id(long long targetId) {
-        // ❌ SecondaryIndex không hỗ trợ xóa theo .id
-        // ✅ Dùng delete_by_index() thay thế (với vị trí được tìm từ findIndexPosition)
-        return false;
-    }
 
     void pop_back() { if (currentSize > 0) currentSize--; }
     

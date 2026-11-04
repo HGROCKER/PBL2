@@ -3,6 +3,8 @@
 #define SEARCH_FEATURES_H
 
 #include <QString>
+#include <QDateTime>
+#include <algorithm>
 #include <vector>
 #include <cmath>
 #include "csdl.h"
@@ -11,8 +13,7 @@
 namespace plb2 {
 
 inline QString normalizeText(const QString& value) {
-    QString out = value.trimmed();
-    return out.toLower();
+    return value.trimmed().toCaseFolded();
 }
 
 inline bool matchesText(const QString& value, const QString& filter) {
@@ -36,6 +37,8 @@ struct PlayerSearchFilter {
     int maxNumber = -1;
     long long minGoals = -1;
     long long maxGoals = -1;
+    int minBirthYear = -1;
+    int maxBirthYear = -1;
 };
 
 struct TeamSearchFilter {
@@ -86,10 +89,10 @@ inline std::vector<cauThu*> filterPlayers(Database& db, const PlayerSearchFilter
         }
     }
     else if (filter.minAge >= 0) {
-        int startIndex = ::findFirstIndex(db.indexCauThuTuoi, filter.minAge);
-        if (startIndex != -1) {
+        int startIndex = ::findFirstIndexAtOrAfter(db.indexCauThuTuoi, filter.minAge);
+        if (startIndex >= 0) {
             int totalSize = db.indexCauThuTuoi.size();
-            for (int i = startIndex; i != totalSize; ++i) {
+            for (int i = startIndex; i < totalSize; ++i) {
                 auto& idxRecord = db.indexCauThuTuoi[i];
                 if (filter.maxAge >= 0 && idxRecord.key > filter.maxAge) {
                     break;
@@ -111,8 +114,8 @@ inline std::vector<cauThu*> filterPlayers(Database& db, const PlayerSearchFilter
     }
     else {
         int totalCount = db.getCauThuCount();
-        for (int i = 1; i != (totalCount + 1); ++i) {
-            cauThu* player = db.getCauThuById(i);
+        for (int i = 0; i < totalCount; ++i) {
+            cauThu* player = db.getCauThuAt(i);
             if (!player) {
                 continue;
             }
@@ -126,6 +129,14 @@ inline std::vector<cauThu*> filterPlayers(Database& db, const PlayerSearchFilter
             result.push_back(player);
         }
     }
+    if (filter.minBirthYear >= 0 || filter.maxBirthYear >= 0) {
+        result.erase(std::remove_if(result.begin(), result.end(), [&](const cauThu* player) {
+            if (!player || player->getNgaySinh() <= 0) return true;
+            const int year = QDateTime::fromSecsSinceEpoch(player->getNgaySinh()).date().year();
+            return (filter.minBirthYear >= 0 && year < filter.minBirthYear) ||
+                   (filter.maxBirthYear >= 0 && year > filter.maxBirthYear);
+        }), result.end());
+    }
     return result;
 }
 
@@ -133,8 +144,8 @@ inline std::vector<cauThu*> filterPlayers(Database& db, const PlayerSearchFilter
 inline std::vector<doiBong*> filterTeams(Database& db, const plb2::TeamSearchFilter& filter) {
     std::vector<doiBong*> result;
     int totalCount = db.getDoiBongCount();
-    for (int i = 1; i != (totalCount + 1); ++i) {
-        doiBong* team = db.getDoiBongById(i);
+    for (int i = 0; i < totalCount; ++i) {
+        doiBong* team = db.getDoiBongAt(i);
         if (!team) {
             continue;
         }
@@ -154,10 +165,10 @@ inline std::vector<tranDau*> filterMatches(Database& db, const MatchSearchFilter
     std::vector<tranDau*> result;
 
     if (filter.fromDate >= 0) {
-        int startIndex = ::findFirstIndex(db.indexTranDauNgay, filter.fromDate);
-        if (startIndex != -1) {
+        int startIndex = ::findFirstIndexAtOrAfter(db.indexTranDauNgay, filter.fromDate);
+        if (startIndex >= 0) {
             int totalSize = db.indexTranDauNgay.size();
-            for (int i = startIndex; i != totalSize; ++i) {
+            for (int i = startIndex; i < totalSize; ++i) {
                 auto& idxRecord = db.indexTranDauNgay[i];
                 if (filter.toDate >= 0 && idxRecord.key > filter.toDate) {
                     break;
@@ -182,8 +193,8 @@ inline std::vector<tranDau*> filterMatches(Database& db, const MatchSearchFilter
     }
     else {
         int totalCount = db.getTranDauCount();
-        for (int i = 1; i != (totalCount + 1); ++i) {
-            tranDau* match = db.getTranDauById(i);
+        for (int i = 0; i < totalCount; ++i) {
+            tranDau* match = db.getTranDauAt(i);
             if (!match) {
                 continue;
             }

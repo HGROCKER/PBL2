@@ -217,7 +217,7 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 CMAKE_PROJECT_INCLUDE_BEFORE:FILEPATH=D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=PLB2
+CMAKE_PROJECT_NAME:STATIC=PBL2
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/Qt/Tools/mingw1310_64/bin/ranlib.exe
@@ -301,6 +301,15 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
+
+//Value Computed by CMake
+PBL2_BINARY_DIR:STATIC=D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug
+
+//Value Computed by CMake
+PBL2_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+PBL2_SOURCE_DIR:STATIC=D:/PBL2
 
 //Value Computed by CMake
 PLB2_BINARY_DIR:STATIC=D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug
