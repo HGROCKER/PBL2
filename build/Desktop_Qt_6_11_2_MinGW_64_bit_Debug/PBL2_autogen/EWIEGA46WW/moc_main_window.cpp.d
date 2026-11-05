@@ -1,5 +1,8 @@
 D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_main_window.cpp: D:/PBL2/main_window.h \
   D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h \
+  C:/Qt/6.11.2/mingw_64/include/QtCore/QDate \
+  C:/Qt/6.11.2/mingw_64/include/QtCore/QDateTime \
+  C:/Qt/6.11.2/mingw_64/include/QtCore/QString \
   C:/Qt/6.11.2/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/q20bit.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/q20functional.h \
@@ -24,6 +27,7 @@ D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_m
   C:/Qt/6.11.2/mingw_64/include/QtCore/qbytearrayalgorithms.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qbytearraylist.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qbytearrayview.h \
+  C:/Qt/6.11.2/mingw_64/include/QtCore/qcalendar.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qchar.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qcheckedint_impl.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qcompare.h \
@@ -38,6 +42,7 @@ D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_m
   C:/Qt/6.11.2/mingw_64/include/QtCore/qcontiguouscache.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qdarwinhelpers.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qdatastream.h \
+  C:/Qt/6.11.2/mingw_64/include/QtCore/qdatetime.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qdebug.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qendian.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qexceptionhandling.h \
@@ -57,6 +62,7 @@ D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_m
   C:/Qt/6.11.2/mingw_64/include/QtCore/qlatin1stringview.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qline.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qlist.h \
+  C:/Qt/6.11.2/mingw_64/include/QtCore/qlocale.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qlogging.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qmalloc.h \
   C:/Qt/6.11.2/mingw_64/include/QtCore/qmap.h \
@@ -411,4 +417,5 @@ D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/EWIEGA46WW/moc_m
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
   D:/PBL2/csdl.h \
   D:/PBL2/database.h \
+  D:/PBL2/search_features.h \
   D:/PBL2/vector.h

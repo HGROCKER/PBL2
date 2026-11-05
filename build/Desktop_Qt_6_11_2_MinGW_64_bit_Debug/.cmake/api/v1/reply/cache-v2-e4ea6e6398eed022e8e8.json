@@ -887,7 +887,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/PLB2"
+			"value" : "C:/Program Files (x86)/PBL2"
 		},
 		{
 			"name" : "CMAKE_INSTALL_RUNSTATEDIR",
@@ -1191,7 +1191,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "PLB2"
+			"value" : "PBL2"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1598,7 +1598,7 @@
 			"value" : "1"
 		},
 		{
-			"name" : "PLB2_BINARY_DIR",
+			"name" : "PBL2_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1610,7 +1610,7 @@
 			"value" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug"
 		},
 		{
-			"name" : "PLB2_IS_TOP_LEVEL",
+			"name" : "PBL2_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1622,7 +1622,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "PLB2_SOURCE_DIR",
+			"name" : "PBL2_SOURCE_DIR",
 			"properties" : 
 			[
 				{
@@ -6939,7 +6939,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files (x86)/PLB2"
+			"value" : "C:/Program Files (x86)/PBL2"
 		}
 	],
 	"kind" : "cache",

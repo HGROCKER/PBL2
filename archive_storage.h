@@ -46,6 +46,7 @@ class ArchiveStorage {
         object["shirt"] = player.getSoAo();
         object["goals"] = player.getSoBanThang();
         object["nationality"] = QString::fromStdString(player.getMaQuocGia());
+        object["documentNumber"] = QString::fromStdString(player.getSoGiayTo());
         object["teamId"] = player.getMaDoiBong();
         object["appearances"] = player.getSoTranChoi();
         object["phone"] = player.getSdt();
@@ -99,6 +100,8 @@ class ArchiveStorage {
         for (int i = 0; i < database.getTranDauCount(); ++i)
             matches.append(matchObject(*database.getTranDauAt(i)));
         QJsonObject root;
+        root["format"] = "PLB2_ARCHIVE";
+        root["version"] = 1;
         root["players"] = players;
         root["teams"] = teams;
         root["matches"] = matches;
@@ -127,6 +130,10 @@ class ArchiveStorage {
             const int height = intValue(object, "height", valid);
             const int weight = intValue(object, "weight", valid);
             const QString imagePath = stringValue(object, "imagePath", valid);
+            QString documentNumber;
+            if (object.contains("documentNumber")) {
+                documentNumber = stringValue(object, "documentNumber", valid);
+            }
             if (!valid || id <= 0) {
                 error = "Tệp lưu trữ chứa thông tin cầu thủ không đầy đủ.";
                 return false;
@@ -134,6 +141,7 @@ class ArchiveStorage {
             cauThu player(id, name.toStdString().c_str(), position.toStdString().c_str(), age, shirt, teamId);
             player.setSoBanThang(goals);
             player.setMaQuocGia(nationality.toStdString().c_str());
+            player.setSoGiayTo(documentNumber.toStdString());
             player.setSoTranChoi(appearances);
             player.setSdt(phone);
             player.setNgaySinh(birthDate);
@@ -141,7 +149,7 @@ class ArchiveStorage {
             player.setCanNang(weight);
             player.setImagePath(imagePath.toStdString());
             if (!database.insert_cauThu_single(player)) {
-                error = "ID cầu thủ bị trùng trong tệp lưu trữ.";
+                error = "ID hoặc số CMND/hộ chiếu cầu thủ bị trùng trong tệp lưu trữ.";
                 return false;
             }
         }
@@ -229,14 +237,7 @@ public:
     static bool save(const Database& database, const QString& path, std::string& error) {
         error.clear();
         const QJsonObject root = toJson(database);
-        QByteArray bytes = "PLB2_TEXT_V1\n";
-        const auto appendRows = [&](const char* type, const QJsonArray& array) {
-            for (const QJsonValue& value : array)
-                bytes += QByteArray(type) + '\t' + QJsonDocument(value.toObject()).toJson(QJsonDocument::Compact) + '\n';
-        };
-        appendRows("PLAYER", root.value("players").toArray());
-        appendRows("TEAM", root.value("teams").toArray());
-        appendRows("MATCH", root.value("matches").toArray());
+        const QByteArray bytes = QJsonDocument(root).toJson(QJsonDocument::Indented);
 
         QSaveFile file(path);
         if (!file.open(QIODevice::WriteOnly) || file.write(bytes) != bytes.size() || !file.commit()) {
@@ -259,32 +260,53 @@ public:
             return false;
         }
         QJsonArray players, teams, matches;
-        const QList<QByteArray> lines = bytes.split('\n');
-        if (lines.isEmpty() || lines.first().trimmed() != "PLB2_TEXT_V1") {
-            error = "Tệp văn bản không đúng định dạng PLB2_TEXT_V1.";
-            return false;
-        }
-        for (int i = 1; i < lines.size(); ++i) {
-            const QByteArray row = lines[i].trimmed();
-            if (row.isEmpty()) continue;
-            const int separator = row.indexOf('\t');
-            if (separator <= 0) {
-                error = "Bản ghi văn bản không hợp lệ ở dòng " + std::to_string(i + 1);
+        QJsonParseError jsonError;
+        const QJsonDocument jsonDocument = QJsonDocument::fromJson(bytes, &jsonError);
+        if (jsonError.error == QJsonParseError::NoError) {
+            if (!jsonDocument.isObject()) {
+                error = "Tệp JSON phải có đối tượng gốc chứa players, teams và matches.";
                 return false;
             }
-            QJsonParseError parseError;
-            const QJsonDocument record = QJsonDocument::fromJson(row.mid(separator + 1), &parseError);
-            if (parseError.error != QJsonParseError::NoError || !record.isObject()) {
-                error = "Bản ghi văn bản không hợp lệ ở dòng " + std::to_string(i + 1);
+            const QJsonObject root = jsonDocument.object();
+            if (root.value("format").toString() != "PLB2_ARCHIVE" ||
+                root.value("version").toInt() != 1 ||
+                !root.value("players").isArray() ||
+                !root.value("teams").isArray() ||
+                !root.value("matches").isArray()) {
+                error = "Tệp JSON không đúng cấu trúc PLB2_ARCHIVE phiên bản 1.";
                 return false;
             }
-            const QByteArray type = row.left(separator);
-            if (type == "PLAYER") players.append(record.object());
-            else if (type == "TEAM") teams.append(record.object());
-            else if (type == "MATCH") matches.append(record.object());
-            else {
-                error = "Loại đối tượng không được hỗ trợ ở dòng " + std::to_string(i + 1);
+            players = root.value("players").toArray();
+            teams = root.value("teams").toArray();
+            matches = root.value("matches").toArray();
+        } else {
+            const QList<QByteArray> lines = bytes.split('\n');
+            if (lines.isEmpty()) {
+                error = "Tệp rỗng.";
                 return false;
+            }
+            for (int i = 1; i < lines.size(); ++i) {
+                const QByteArray row = lines[i].trimmed();
+                if (row.isEmpty()) continue;
+                const int separator = row.indexOf('\t');
+                if (separator <= 0) {
+                    error = "Bản ghi văn bản không hợp lệ ở dòng " + std::to_string(i + 1);
+                    return false;
+                }
+                QJsonParseError recordError;
+                const QJsonDocument record = QJsonDocument::fromJson(row.mid(separator + 1), &recordError);
+                if (recordError.error != QJsonParseError::NoError || !record.isObject()) {
+                    error = "Bản ghi văn bản không hợp lệ ở dòng " + std::to_string(i + 1);
+                    return false;
+                }
+                const QByteArray type = row.left(separator);
+                if (type == "PLAYER") players.append(record.object());
+                else if (type == "TEAM") teams.append(record.object());
+                else if (type == "MATCH") matches.append(record.object());
+                else {
+                    error = "Loại đối tượng không được hỗ trợ ở dòng " + std::to_string(i + 1);
+                    return false;
+                }
             }
         }
 

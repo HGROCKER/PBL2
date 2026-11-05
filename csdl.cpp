@@ -7,7 +7,8 @@ using namespace std;
 cauThu::cauThu() {
     id = 0; tuoi = 0; soAo = 0; soBanThang = 0; maDoiBong = 0; soTranChoi = 0; sdt = 0;
     chieuCao = 0; canNang = 0;
-    ptrDoiBong = nullptr; ngaySinh = 0;
+    ngaySinh = 0;
+    soGiayTo.clear();
     ten[0] = '\0'; viTri[0] = '\0'; maQuocGia[0] = '\0';
     imagePath.clear();
 }
@@ -15,7 +16,8 @@ cauThu::cauThu() {
 cauThu::cauThu(long long _id, const char* _ten, const char* _viTri, int _tuoi, int _soAo, int _maDoiBong) {
     id = _id; tuoi = _tuoi; soAo = _soAo; maDoiBong = _maDoiBong;
     soBanThang = 0; soTranChoi = 0; sdt = 0; chieuCao = 0; canNang = 0;
-    ptrDoiBong = nullptr; ngaySinh = 0;
+    ngaySinh = 0;
+    soGiayTo.clear();
     std::strncpy(ten, _ten, 49); ten[49] = '\0';
     std::strncpy(viTri, _viTri, 49); viTri[49] = '\0';
     maQuocGia[0] = '\0';
@@ -36,6 +38,7 @@ void cauThu::update(const cauThu& thongTinMoi) {
     chieuCao = thongTinMoi.chieuCao;
     canNang = thongTinMoi.canNang;
     ngaySinh = thongTinMoi.ngaySinh;
+    soGiayTo = thongTinMoi.soGiayTo;
     std::strncpy(maQuocGia, thongTinMoi.maQuocGia, 3); maQuocGia[3] = '\0';
     imagePath = thongTinMoi.imagePath;
 }
@@ -44,7 +47,6 @@ doiBong::doiBong() {
     id = 0; soCauThu = 0; soTranThang = 0; soTranHoa = 0; soTranThua = 0; soBanThang = 0; soBanThua = 0;
     diemXepHang = 0; ngayThanhLap = 0; soCauThuHienTai = 0;
     ten[0] = '\0'; huanLuyenVien[0] = '\0'; diaPhuong[0] = '\0'; maQuocGia[0] = '\0';
-    listCauThu = nullptr; cauThuList = nullptr;
     imagePath.clear();
 }
 
@@ -55,12 +57,7 @@ doiBong::doiBong(long long _id, const char* _ten, const char* _hlv, const char* 
     std::strncpy(huanLuyenVien, _hlv, 49); huanLuyenVien[49] = '\0';
     std::strncpy(diaPhuong, _diaPhuong, 49); diaPhuong[49] = '\0';
     maQuocGia[0] = '\0';
-    listCauThu = nullptr; cauThuList = nullptr;
     imagePath.clear();
-}
-
-doiBong::~doiBong() {
-    if (listCauThu != nullptr) delete[] listCauThu;
 }
 
 const doiBong* doiBong::get() const { return this; }

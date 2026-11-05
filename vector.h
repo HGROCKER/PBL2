@@ -27,27 +27,6 @@ private:
         arr = newArr;
     }
 
-    void quickSortData(int low, int high) {
-        if (low >= high) return;
-        long long pivot = arr[high].id;
-        int i = low - 1;
-        for (int j = low; j < high; j++) {
-            if (arr[j].id < pivot) {
-                i++;
-                std::swap(arr[i], arr[j]);
-            }
-        }
-        std::swap(arr[i + 1], arr[high]);
-        int pivotIndex = i + 1;
-        quickSortData(low, pivotIndex - 1);
-        quickSortData(pivotIndex + 1, high);
-    }
-
-    void sortData() {
-        if (currentSize <= 1) return;
-        quickSortData(0, currentSize - 1); 
-    }
-
 public:
     MyVector() : arr(nullptr), capacity(0), currentSize(0), nextId(1) {}
     ~MyVector() { delete[] arr; }
@@ -101,22 +80,6 @@ public:
         currentSize++;
     }
     
-
-    void insert_bulk(T* rawArray, int count) {
-        if (count <= 0) return;
-
-        if (currentSize + count > capacity) {
-            resize(currentSize + count);
-        }
-
-        for (int i = 0; i < count; i++) {
-            if (rawArray[i].id <= 0) rawArray[i].id = nextId++;
-            else if (rawArray[i].id >= nextId) nextId = rawArray[i].id + 1;
-            arr[currentSize + i] = rawArray[i];
-        }
-        currentSize += count;
-        sortData();
-    }
 
     void push_back(T value) {
         if (value.id <= 0) {
@@ -259,19 +222,6 @@ public:
             resize(newCapacity);
         }
         arr[currentSize++] = value;
-    }
-
-    void insert_bulk(SecondaryIndex<K>* rawArray, int count ) {
-        
-        if (count <= 0) return;
-        if (currentSize + count > capacity) {
-            resize(currentSize + count);
-        }
-        for (int i = 0; i < count; i++) {
-            arr[currentSize + i] = rawArray[i];
-        }
-        currentSize += count;
-        
     }
 
     bool delete_by_index(int index) {

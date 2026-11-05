@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "PLB2.exe"
+			"path" : "PBL2.exe"
 		},
 		{
-			"path" : "PLB2.pdb"
+			"path" : "PBL2.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -40,13 +40,13 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 34,
+				"line" : 36,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 36,
+				"line" : 38,
 				"parent" : 0
 			},
 			{
@@ -191,7 +191,7 @@
 			[
 				{
 					"backtrace" : 0,
-					"path" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB2_autogen/include"
+					"path" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/include"
 				},
 				{
 					"backtrace" : 17,
@@ -245,14 +245,14 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "PLB2_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 0,
+			"id" : "PBL2_autogen::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 0,
-			"id" : "PLB2_autogen::@6890427a1f51a3e7e1df"
+			"id" : "PBL2_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "PLB2::@6890427a1f51a3e7e1df",
+	"id" : "PBL2::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -317,8 +317,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "PLB2",
-	"nameOnDisk" : "PLB2.exe",
+	"name" : "PBL2",
+	"nameOnDisk" : "PBL2.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -350,21 +350,23 @@
 				11,
 				12,
 				13,
-				14
+				14,
+				15,
+				16
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				15
+				17
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				16
+				18
 			]
 		}
 	],
@@ -374,7 +376,7 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB2_autogen/mocs_compilation.cpp",
+			"path" : "build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/mocs_compilation.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -451,15 +453,25 @@
 			"sourceGroupIndex" : 1
 		},
 		{
+			"backtrace" : 1,
+			"path" : "core/application_logic.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "ui/logic_messages.h",
+			"sourceGroupIndex" : 1
+		},
+		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB2_autogen/timestamp",
+			"path" : "build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/timestamp",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PLB2_autogen/timestamp.rule",
+			"path" : "build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/timestamp.rule",
 			"sourceGroupIndex" : 3
 		}
 	],

@@ -42,7 +42,7 @@ private:
 
     // Layer 1: List & Search
     QTableWidget *playerTable;
-    QLineEdit *searchNameInput, *searchPositionInput;
+    QLineEdit *searchIdInput, *searchNameInput, *searchPositionInput, *searchDocumentNumberInput;
     QComboBox *searchTeamCombo;
     QSpinBox *searchMinAge, *searchMaxAge, *searchMinNumber, *searchMaxNumber;
     QSpinBox *searchMinGoals, *searchMaxGoals;
@@ -52,7 +52,7 @@ private:
     QLabel *statusLabelList;
 
     // Layer 2: Detail & Edit Form
-    QLineEdit *nameInput, *positionInput, *nationalityInput;
+    QLineEdit *nameInput, *positionInput, *nationalityInput, *documentNumberInput;
     QLineEdit *imagePathInput;
     QLineEdit *phoneInput;
     QDateEdit *birthDateInput;
@@ -80,10 +80,15 @@ private:
         searchBtnLayout->addWidget(clearSearchBtn);
         searchLayout->addLayout(searchBtnLayout);
         QFormLayout *filterForm = new QFormLayout();
+        searchIdInput = new QLineEdit();
+        searchIdInput->setPlaceholderText("Nhập ID chính xác");
+        filterForm->addRow("ID:", searchIdInput);
         searchNameInput = new QLineEdit();
         filterForm->addRow("Tên:", searchNameInput);
         searchPositionInput = new QLineEdit();
         filterForm->addRow("Vị trí:", searchPositionInput);
+        searchDocumentNumberInput = new QLineEdit();
+        filterForm->addRow("CCCD/Hộ chiếu:", searchDocumentNumberInput);
         searchTeamCombo = new QComboBox();
         searchTeamCombo->addItem("Tất cả", -1);
         filterForm->addRow("Đội bóng:", searchTeamCombo);
@@ -120,7 +125,7 @@ private:
         playerTable->setColumnCount(14);
         playerTable->setHorizontalHeaderLabels({"ID", "Tên", "Vị Trí", "Tuổi", "Ngày sinh", "Số áo",
                                                 "Bàn thắng", "Đội bóng", "Quốc tịch", "Số trận", "Điện thoại",
-                                                "Cao (cm)", "Nặng (kg)", "Ảnh"});
+                                                "Cao (cm)", "Nặng (kg)", "CMND/Hộ chiếu"});
         playerTable->horizontalHeader()->setStretchLastSection(true);
         playerTable->setSelectionBehavior(QAbstractItemView::SelectRows);
         playerTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -207,6 +212,11 @@ private:
         phoneInput = new QLineEdit();
         phoneInput->setValidator(new QIntValidator(0, 2147483647, phoneInput));
         formLayout->addWidget(phoneInput, 5, 1);
+        formLayout->addWidget(new QLabel("CMND/Hộ chiếu:"), 5, 2);
+        documentNumberInput = new QLineEdit();
+        documentNumberInput->setMaxLength(40);
+        documentNumberInput->setPlaceholderText("Số giấy tờ định danh");
+        formLayout->addWidget(documentNumberInput, 5, 3, 1, 2);
 
         // Hàng 6
         formLayout->addWidget(new QLabel("Trực Thuộc CLB:"), 6, 0);
@@ -263,7 +273,8 @@ private:
             playerTable->setItem(row, 0, sortableItem(QString::number(ct->getId()), QVariant::fromValue<qlonglong>(ct->getId())));
             playerTable->setItem(row, 1, sortableItem(QString::fromStdString(ct->getTen())));
             playerTable->setItem(row, 2, sortableItem(QString::fromStdString(ct->getViTri())));
-            playerTable->setItem(row, 3, sortableItem(QString::number(ct->getTuoi()), ct->getTuoi()));
+            const int age = plb2::playerAgeAt(*ct);
+            playerTable->setItem(row, 3, sortableItem(age >= 0 ? QString::number(age) : "—", age));
             const QDate birthDate = ct->getNgaySinh() > 0
                                         ? QDateTime::fromSecsSinceEpoch(ct->getNgaySinh()).date()
                                         : QDate();
@@ -279,9 +290,9 @@ private:
             playerTable->setItem(row, 10, sortableItem(QString::number(ct->getSdt()), ct->getSdt()));
             playerTable->setItem(row, 11, sortableItem(QString::number(ct->getChieuCao()), ct->getChieuCao()));
             playerTable->setItem(row, 12, sortableItem(QString::number(ct->getCanNang()), ct->getCanNang()));
-            playerTable->setItem(row, 13, sortableItem(QString::fromStdString(ct->getImagePath())));
+            playerTable->setItem(row, 13, sortableItem(QString::fromStdString(ct->getSoGiayTo())));
         }
-        const int columnWidths[] = {48, 115, 70, 45, 90, 45, 62, 115, 55, 58, 78, 55, 55, 100};
+        const int columnWidths[] = {48, 115, 70, 45, 90, 45, 62, 115, 55, 58, 78, 55, 55, 125};
         for (int column = 0; column < playerTable->columnCount(); ++column)
             playerTable->setColumnWidth(column, columnWidths[column]);
     }
@@ -298,9 +309,35 @@ private:
     }
 
     void applySearch() {
+        long long playerId = -1;
+        const QString idText = searchIdInput->text().trimmed();
+        if (!idText.isEmpty()) {
+            bool validId = false;
+            playerId = idText.toLongLong(&validId);
+            if (!validId || playerId <= 0) {
+                QMessageBox::warning(this, "ID không hợp lệ",
+                                     "ID cầu thủ phải là số nguyên dương.");
+                return;
+            }
+        }
+
+        const auto validRange = [](const QSpinBox* minimum, const QSpinBox* maximum) {
+            return plb2::isValidRange(minimum->value(), maximum->value());
+        };
+        if (!validRange(searchMinAge, searchMaxAge) ||
+            !validRange(searchMinNumber, searchMaxNumber) ||
+            !validRange(searchMinGoals, searchMaxGoals) ||
+            !validRange(searchMinBirthYear, searchMaxBirthYear)) {
+            QMessageBox::warning(this, "Khoảng lọc không hợp lệ",
+                                 "Giá trị Từ không được lớn hơn giá trị Đến.");
+            return;
+        }
+
         plb2::PlayerSearchFilter filter;
+        filter.playerId = playerId;
         filter.name = searchNameInput->text();
         filter.position = searchPositionInput->text();
+        filter.documentNumber = searchDocumentNumberInput->text();
         filter.teamId = searchTeamCombo->currentData().toInt();
         filter.minAge = searchMinAge->value();
         filter.maxAge = searchMaxAge->value();
@@ -311,14 +348,16 @@ private:
         filter.minBirthYear = searchMinBirthYear->value();
         filter.maxBirthYear = searchMaxBirthYear->value();
 
-        const auto players = plb2::filterPlayers(*db, filter);
+        const auto players = db->searchPlayers(filter);
         renderPlayerRows(players);
         statusLabelList->setText(QString("Tìm thấy %1 cầu thủ").arg(players.size()));
     }
 
     void clearSearch() {
+        searchIdInput->clear();
         searchNameInput->clear();
         searchPositionInput->clear();
+        searchDocumentNumberInput->clear();
         searchTeamCombo->setCurrentIndex(0);
         searchMinAge->setValue(-1);
         searchMaxAge->setValue(-1);
@@ -379,12 +418,12 @@ public slots:
         if (!ct) return;
         nameInput->setText(QString::fromStdString(ct->getTen()));
         positionInput->setText(QString::fromStdString(ct->getViTri()));
-        ageInput->setValue(ct->getTuoi());
         numberInput->setValue(ct->getSoAo());
         goalsInput->setValue(ct->getSoBanThang());
         int tIdx = teamCombo->findData(QVariant((int)ct->getMaDoiBong()));
         if (tIdx != -1) teamCombo->setCurrentIndex(tIdx);
         nationalityInput->setText(QString::fromStdString(ct->getMaQuocGia()));
+        documentNumberInput->setText(QString::fromStdString(ct->getSoGiayTo()));
         imagePathInput->setText(QString::fromStdString(ct->getImagePath()));
         appearancesInput->setValue(ct->getSoTranChoi());
         phoneInput->setText(ct->getSdt() > 0 ? QString::number(ct->getSdt()) : QString());
@@ -395,7 +434,8 @@ public slots:
         birthDateInput->setDate(unknownBirthDate
                                     ? QDate::currentDate().addYears(-ct->getTuoi())
                                     : QDateTime::fromSecsSinceEpoch(ct->getNgaySinh()).date());
-        ageInput->setValue(ct->getTuoi());
+        const int age = plb2::playerAgeAt(*ct);
+        if (age >= 0) ageInput->setValue(age);
         updateImagePreview(QString("👤\n%1").arg(QString::fromStdString(ct->getTen())));
     }
 
@@ -424,6 +464,7 @@ public slots:
             ct.setSoBanThang(goalsInput->value());
             ct.setMaDoiBong(teamCombo->currentData().toInt());
             ct.setMaQuocGia(nationalityInput->text().trimmed().toUpper().toStdString().c_str());
+            ct.setSoGiayTo(documentNumberInput->text().trimmed().toStdString());
             ct.setImagePath(imagePathInput->text().trimmed().toStdString());
             ct.setSoTranChoi(appearancesInput->value());
             ct.setSdt(phoneInput->text().toInt());
@@ -439,6 +480,7 @@ public slots:
                         teamCombo->currentData().toInt());
             ct.setSoBanThang(goalsInput->value());
             ct.setMaQuocGia(nationalityInput->text().trimmed().toUpper().toStdString().c_str());
+            ct.setSoGiayTo(documentNumberInput->text().trimmed().toStdString());
             ct.setImagePath(imagePathInput->text().trimmed().toStdString());
             ct.setSoTranChoi(appearancesInput->value());
             ct.setSdt(phoneInput->text().toInt());
@@ -452,10 +494,12 @@ public slots:
             QMessageBox::warning(this, "Lỗi", logicErrorMessage(result.error));
             return;
         }
-        if (!result.persisted)
-            QMessageBox::warning(this, "Lỗi lưu dữ liệu", QString::fromStdString(result.persistenceError));
-        statusLabelList->setText(!result.persisted ? "Dữ liệu đã đổi trong bộ nhớ nhưng chưa ghi đầy đủ ra tệp." :
-                                 (isEditMode ? "✓ Cập nhật hồ sơ thành công!" : "✓ Thêm cầu thủ mới thành công!"));
+        if (!result.logged)
+            QMessageBox::warning(this, "Lỗi ghi nhật ký",
+                                 "Dữ liệu đã đổi trong bộ nhớ nhưng không ghi được nhật ký: " +
+                                     QString::fromStdString(result.logError));
+        statusLabelList->setText(isEditMode ? "Đã cập nhật trong bộ nhớ. Chọn File > Lưu tệp dữ liệu để lưu bền vững." :
+                                               "Đã thêm trong bộ nhớ. Chọn File > Lưu tệp dữ liệu để lưu bền vững.");
         refreshTable();
         stackedWidget->setCurrentIndex(0);
     }
@@ -468,11 +512,12 @@ public slots:
                 QMessageBox::warning(this, "Lỗi", logicErrorMessage(result.error));
                 return;
             }
-            if (!result.persisted)
-                QMessageBox::warning(this, "Lỗi lưu dữ liệu", QString::fromStdString(result.persistenceError));
+            if (!result.logged)
+                QMessageBox::warning(this, "Lỗi ghi nhật ký",
+                                     "Dữ liệu đã đổi trong bộ nhớ nhưng không ghi được nhật ký: " +
+                                         QString::fromStdString(result.logError));
             refreshTable();
-            statusLabelList->setText(result.persisted ? "✓ Đã xóa cầu thủ!" :
-                                     "Đã xóa trong bộ nhớ nhưng chưa ghi đầy đủ ra tệp.");
+            statusLabelList->setText("Đã xóa trong bộ nhớ. Chọn File > Lưu tệp dữ liệu để lưu bền vững.");
             stackedWidget->setCurrentIndex(0);
         }
     }
@@ -493,6 +538,8 @@ public:
         connect(clearSearchBtn, &QPushButton::clicked, this, &PlayerWidget::clearSearch);
         connect(searchNameInput, &QLineEdit::returnPressed, this, &PlayerWidget::applySearch);
         connect(searchPositionInput, &QLineEdit::returnPressed, this, &PlayerWidget::applySearch);
+        connect(searchIdInput, &QLineEdit::returnPressed, this, &PlayerWidget::applySearch);
+        connect(searchDocumentNumberInput, &QLineEdit::returnPressed, this, &PlayerWidget::applySearch);
         connect(openAddFormBtn, &QPushButton::clicked, this, &PlayerWidget::onOpenAddForm);
         connect(backBtn, &QPushButton::clicked, this, &PlayerWidget::onBack);
         connect(resetBtn, &QPushButton::clicked, this, &PlayerWidget::onResetForm);
@@ -516,6 +563,7 @@ public:
 
     void clearInputs() {
         nameInput->clear(); positionInput->clear(); nationalityInput->setText("VIE");
+        documentNumberInput->clear();
         ageInput->setValue(20); numberInput->setValue(1); goalsInput->setValue(0);
         heightInput->setValue(175); weightInput->setValue(70);
         appearancesInput->setValue(0); phoneInput->clear();

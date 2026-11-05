@@ -25,7 +25,7 @@ private:
     int chieuCao;
     int canNang;
     long long ngaySinh;
-    doiBong *ptrDoiBong;
+    string soGiayTo;
     string imagePath;
 
 public:
@@ -41,6 +41,7 @@ public:
     int getSoAo() const { return soAo; }
     int getSoBanThang() const { return soBanThang; }
     string getMaQuocGia() const { return maQuocGia; }
+    string getSoGiayTo() const { return soGiayTo; }
     string getImagePath() const { return imagePath; }
     int getMaDoiBong() const { return maDoiBong; }
     int getSoTranChoi() const { return soTranChoi; }
@@ -59,6 +60,7 @@ public:
     void setChieuCao(int chieuCaoMoi) { chieuCao = chieuCaoMoi; }
     void setCanNang(int canNangMoi) { canNang = canNangMoi; }
     void setNgaySinh(long long ngaySinhMoi) { ngaySinh = ngaySinhMoi; }
+    void setSoGiayTo(const string& soGiayToMoi) { soGiayTo = soGiayToMoi; }
     void setMaDoiBong(int maDoiBongMoi) { this->maDoiBong = maDoiBongMoi; }
     void setTen(const char* tenMoi) {
         std::strncpy(ten, tenMoi, sizeof(ten) - 1);
@@ -92,8 +94,6 @@ private:
     int soBanThua;
     char maQuocGia[4];
     string imagePath;
-    long long *listCauThu;
-    MyVector<cauThu*> *cauThuList;
     int soCauThuHienTai;
     long long ngayThanhLap;
 
@@ -101,7 +101,6 @@ public:
     long long id;
     doiBong();
     doiBong(long long _id, const char* _ten, const char* _hlv, const char* _diaPhuong);
-    ~doiBong();
     const doiBong* get() const;
     void update(const doiBong& thongTinMoi);
     
@@ -189,13 +188,6 @@ public:
     
     void setSoBanThangDoi1(int banMoi) { this->soBanThangDoi1 = banMoi; }
     void setSoBanThangDoi2(int banMoi) { this->soBanThangDoi2 = banMoi; }
-};
-
-class QuocGia {
-    long long id;
-    char maQuocGia[4];
-    char tenQuocGia[50];
-    int diemXepHang;
 };
 
 #endif
