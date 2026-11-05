@@ -3,7 +3,10 @@
 #define DATABASE_H
 #include "vector.h"
 #include "csdl.h"
+<<<<<<< HEAD
 #include "search_features.h"
+=======
+>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35
 #include <algorithm>
 #include <cstring>
 #include <cctype>
@@ -722,6 +725,7 @@ public:
         if (pos != -1) indexTranDauNgay.delete_by_index(pos);
         return dbTranDau.delete_by_id(id);
     }
+<<<<<<< HEAD
 
     std::vector<cauThu*> searchPlayers(const plb2::PlayerSearchFilter& filter) {
         std::vector<cauThu*> result;
@@ -811,6 +815,8 @@ public:
         return result;
     }
 
+=======
+>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35
     cauThu* getCauThuById(long long id) { return dbCauThu.find_by_id(id); }
     doiBong* getDoiBongById(long long id) { return dbDoiBong.find_by_id(id); }
     tranDau* getTranDauById(long long id) { return dbTranDau.find_by_id(id); }

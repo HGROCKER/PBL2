@@ -4,10 +4,16 @@ set("CMAKE_BUILD_TYPE" "Debug" CACHE "STRING" "" FORCE)
 set("CMAKE_COLOR_DIAGNOSTICS" "ON" CACHE "BOOL" "" FORCE)
 set("CMAKE_CXX_COMPILER" "C:/Qt/Tools/mingw1310_64/bin/g++.exe" CACHE "FILEPATH" "" FORCE)
 set("CMAKE_C_COMPILER" "C:/Qt/Tools/mingw1310_64/bin/gcc.exe" CACHE "FILEPATH" "" FORCE)
+<<<<<<< HEAD
 set("CMAKE_GENERATOR" "Ninja" CACHE "STRING" "" FORCE)
 set("CMAKE_MAKE_PROGRAM" "C:/Strawberry/c/bin/ninja.exe" CACHE "STRING" "" FORCE)
 set("CMAKE_PREFIX_PATH" "C:/Qt/6.11.2/mingw_64" CACHE "PATH" "" FORCE)
 set("CMAKE_PROJECT_INCLUDE_BEFORE" "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake" CACHE "FILEPATH" "" FORCE)
+=======
+set("CMAKE_GENERATOR" "MinGW Makefiles" CACHE "STRING" "" FORCE)
+set("CMAKE_PREFIX_PATH" "C:/Qt/6.11.2/mingw_64" CACHE "PATH" "" FORCE)
+set("CMAKE_PROJECT_INCLUDE_BEFORE" "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake" CACHE "FILEPATH" "" FORCE)
+>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35
 set("QT_CREATOR_ENABLE_MAINTENANCE_TOOL_PROVIDER" "ON" CACHE "BOOL" "" FORCE)
 set("QT_CREATOR_ENABLE_PACKAGE_MANAGER_SETUP" "ON" CACHE "BOOL" "" FORCE)
 set("QT_ENABLE_QML_DEBUG" "ON" CACHE "BOOL" "" FORCE)

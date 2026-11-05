@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug"
+			"value" : "c:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -104,6 +104,22 @@
 			],
 			"type" : "BOOL",
 			"value" : "ON"
+		},
+		{
+			"name" : "CMAKE_COLOR_MAKEFILE",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "UNINITIALIZED",
+			"value" : ""
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -574,22 +590,6 @@
 			"value" : ""
 		},
 		{
-			"name" : "CMAKE_EXPORT_COMPILE_COMMANDS",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Enable/Disable output of compile commands during generation."
-				}
-			],
-			"type" : "BOOL",
-			"value" : ""
-		},
-		{
 			"name" : "CMAKE_FIND_PACKAGE_REDIRECTS_DIR",
 			"properties" : 
 			[
@@ -599,7 +599,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -611,7 +611,7 @@
 				}
 			],
 			"type" : "STRING",
-			"value" : "Ninja"
+			"value" : "MinGW Makefiles"
 		},
 		{
 			"name" : "CMAKE_GENERATOR_INSTANCE",
@@ -683,7 +683,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/PBL2"
+			"value" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -974,12 +974,16 @@
 			"properties" : 
 			[
 				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "Path to a program."
 				}
 			],
-			"type" : "STRING",
-			"value" : "C:/Strawberry/c/bin/ninja.exe"
+			"type" : "FILEPATH",
+			"value" : "C:/Qt/Tools/mingw1310_64/bin/mingw32-make.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -1179,7 +1183,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake"
+			"value" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake"
 		},
 		{
 			"name" : "CMAKE_PROJECT_NAME",
@@ -1607,7 +1611,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug"
+			"value" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug"
 		},
 		{
 			"name" : "PBL2_IS_TOP_LEVEL",
@@ -1631,7 +1635,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/PBL2"
+			"value" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2"
 		},
 		{
 			"name" : "QTCREATOR_CMAKE_HELPER_DIRECTORY",
@@ -1643,7 +1647,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper"
+			"value" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper"
 		},
 		{
 			"name" : "QT_ADDITIONAL_HOST_PACKAGES_PREFIX_PATH",

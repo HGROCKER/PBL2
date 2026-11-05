@@ -27,6 +27,11 @@
 			"path" : "build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeSystem.cmake"
 		},
 		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeMinGWFindMake.cmake"
+		},
+		{
 			"isGenerated" : true,
 			"path" : "build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake"
 		},
@@ -2108,8 +2113,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug",
-		"source" : "D:/PBL2"
+		"build" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug",
+		"source" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2"
 	},
 	"version" : 
 	{

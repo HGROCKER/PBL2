@@ -1,12 +1,13 @@
 {
 	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
-	"BUILD_DIR" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen",
-	"CMAKE_BINARY_DIR" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug",
-	"CMAKE_CURRENT_BINARY_DIR" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug",
-	"CMAKE_CURRENT_SOURCE_DIR" : "D:/PBL2",
+	"BUILD_DIR" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2",
 	"CMAKE_EXECUTABLE" : "C:/Qt/Tools/CMake_64/bin/cmake.exe",
 	"CMAKE_LIST_FILES" : 
 	[
+<<<<<<< HEAD
 		"D:/PBL2/CMakeLists.txt",
 		"D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake",
 		"D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/package-manager.cmake",
@@ -14,6 +15,16 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystem.cmake.in",
 		"D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeSystem.cmake",
 		"D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake",
+=======
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/CMakeLists.txt",
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake",
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/package-manager.cmake",
+		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake",
+		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystem.cmake.in",
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeSystem.cmake",
+		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeMinGWFindMake.cmake",
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake",
+>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake",
@@ -68,7 +79,11 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCCompiler.cmake.in",
+<<<<<<< HEAD
 		"D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake",
+=======
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake",
+>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-Determine-CXX.cmake",
@@ -119,7 +134,11 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in",
+<<<<<<< HEAD
 		"D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
+=======
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
+>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake",
@@ -134,7 +153,11 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in",
+<<<<<<< HEAD
 		"D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake",
+=======
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake",
+>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeRCInformation.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake",
@@ -151,7 +174,11 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCCompiler.cmake.in",
+<<<<<<< HEAD
 		"D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake",
+=======
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake",
+>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake",
@@ -172,7 +199,11 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in",
+<<<<<<< HEAD
 		"D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
+=======
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake",
+>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake",
 		"C:/Qt/6.11.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake",
 		"C:/Qt/6.11.2/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake",
@@ -480,69 +511,94 @@
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake",
 		"C:/Qt/6.11.2/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake"
 	],
-	"CMAKE_SOURCE_DIR" : "D:/PBL2",
+	"CMAKE_SOURCE_DIR" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2",
 	"CROSS_CONFIG" : false,
-	"DEP_FILE" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/deps",
+	"DEP_FILE" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/deps",
 	"DEP_FILE_RULE_NAME" : "PBL2_autogen/timestamp",
 	"HEADERS" : 
 	[
 		[
-			"D:/PBL2/archive_storage.h",
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/archive_storage.h",
 			"MU",
 			"EWIEGA46WW/moc_archive_storage.cpp",
 			null
 		],
 		[
-			"D:/PBL2/core/application_logic.h",
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/core/application_logic.h",
 			"MU",
 			"TAC5DWH4SE/moc_application_logic.cpp",
 			null
 		],
-		[ "D:/PBL2/csdl.h", "MU", "EWIEGA46WW/moc_csdl.cpp", null ],
-		[ "D:/PBL2/database.h", "MU", "EWIEGA46WW/moc_database.cpp", null ],
-		[ "D:/PBL2/main_window.h", "MU", "EWIEGA46WW/moc_main_window.cpp", null ],
 		[
-			"D:/PBL2/match_widget.h",
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/csdl.h",
+			"MU",
+			"EWIEGA46WW/moc_csdl.cpp",
+			null
+		],
+		[
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/database.h",
+			"MU",
+			"EWIEGA46WW/moc_database.cpp",
+			null
+		],
+		[
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/main_window.h",
+			"MU",
+			"EWIEGA46WW/moc_main_window.cpp",
+			null
+		],
+		[
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/match_widget.h",
 			"MU",
 			"EWIEGA46WW/moc_match_widget.cpp",
 			null
 		],
 		[
-			"D:/PBL2/player_widget.h",
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/player_widget.h",
 			"MU",
 			"EWIEGA46WW/moc_player_widget.cpp",
 			null
 		],
 		[
-			"D:/PBL2/search_features.h",
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/search_features.h",
 			"MU",
 			"EWIEGA46WW/moc_search_features.cpp",
 			null
 		],
 		[
-			"D:/PBL2/table_helpers.h",
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/table_helpers.h",
 			"MU",
 			"EWIEGA46WW/moc_table_helpers.cpp",
 			null
 		],
-		[ "D:/PBL2/team_widget.h", "MU", "EWIEGA46WW/moc_team_widget.cpp", null ],
 		[
-			"D:/PBL2/tournament_widget.h",
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/team_widget.h",
+			"MU",
+			"EWIEGA46WW/moc_team_widget.cpp",
+			null
+		],
+		[
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/tournament_widget.h",
 			"MU",
 			"EWIEGA46WW/moc_tournament_widget.cpp",
 			null
 		],
 		[
-			"D:/PBL2/ui/logic_messages.h",
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/ui/logic_messages.h",
 			"MU",
 			"UYX5XTB5RZ/moc_logic_messages.cpp",
 			null
 		],
-		[ "D:/PBL2/vector.h", "MU", "EWIEGA46WW/moc_vector.cpp", null ]
+		[
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/vector.h",
+			"MU",
+			"EWIEGA46WW/moc_vector.cpp",
+			null
+		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
-	"INCLUDE_DIR" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/include",
-	"MOC_COMPILATION_FILE" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/mocs_compilation.cpp",
+	"INCLUDE_DIR" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/mocs_compilation.cpp",
 	"MOC_DEFINITIONS" : 
 	[
 		"MINGW_HAS_SECURE_API=1",
@@ -566,7 +622,7 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"D:/PBL2",
+		"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2",
 		"C:/Qt/6.11.2/mingw_64/include/QtCore",
 		"C:/Qt/6.11.2/mingw_64/include",
 		"C:/Qt/6.11.2/mingw_64/mkspecs/win32-g++",
@@ -599,22 +655,26 @@
 		"-c",
 		"C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp"
 	],
-	"MOC_PREDEFS_FILE" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h",
+	"MOC_PREDEFS_FILE" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h",
 	"MOC_RELAXED_MODE" : false,
 	"MOC_SKIP" : [],
 	"MULTI_CONFIG" : false,
-	"PARALLEL" : 16,
-	"PARSE_CACHE_FILE" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/PBL2_autogen.dir/ParseCache.txt",
+	"PARALLEL" : 2,
+	"PARSE_CACHE_FILE" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/PBL2_autogen.dir/ParseCache.txt",
 	"QT_MOC_EXECUTABLE" : "C:/Qt/6.11.2/mingw_64/bin/moc.exe",
 	"QT_UIC_EXECUTABLE" : "C:/Qt/6.11.2/mingw_64/bin/uic.exe",
 	"QT_VERSION_MAJOR" : 6,
 	"QT_VERSION_MINOR" : 11,
-	"SETTINGS_FILE" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/PBL2_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/PBL2_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "D:/PBL2/csdl.cpp", "MU", null ],
-		[ "D:/PBL2/main.cpp", "MU", null ],
-		[ "D:/PBL2/main_window.cpp", "MU", null ]
+		[ "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/csdl.cpp", "MU", null ],
+		[ "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/main.cpp", "MU", null ],
+		[
+			"C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/main_window.cpp",
+			"MU",
+			null
+		]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

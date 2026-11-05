@@ -443,6 +443,10 @@ PBL2_autogen/timestamp: \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake \
+<<<<<<< HEAD
+=======
+	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeMinGWFindMake.cmake \
+>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake \
 	C:/Qt/Tools/CMake_64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake \
@@ -785,29 +789,29 @@ PBL2_autogen/timestamp: \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
 	C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
-	D:/PBL2/CMakeLists.txt \
-	D:/PBL2/archive_storage.h \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/package-manager.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
-	D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h \
-	D:/PBL2/core/application_logic.h \
-	D:/PBL2/csdl.cpp \
-	D:/PBL2/csdl.h \
-	D:/PBL2/database.h \
-	D:/PBL2/main.cpp \
-	D:/PBL2/main_window.cpp \
-	D:/PBL2/main_window.h \
-	D:/PBL2/match_widget.h \
-	D:/PBL2/player_widget.h \
-	D:/PBL2/search_features.h \
-	D:/PBL2/table_helpers.h \
-	D:/PBL2/team_widget.h \
-	D:/PBL2/tournament_widget.h \
-	D:/PBL2/ui/logic_messages.h \
-	D:/PBL2/vector.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/CMakeLists.txt \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/archive_storage.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/package-manager.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.qtcreator/cmake-helper/qtcreator-project.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCCompiler.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeCXXCompiler.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/PBL2_autogen/moc_predefs.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/core/application_logic.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/csdl.cpp \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/csdl.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/database.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/main.cpp \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/main_window.cpp \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/main_window.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/match_widget.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/player_widget.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/search_features.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/table_helpers.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/team_widget.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/tournament_widget.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/ui/logic_messages.h \
+	C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/vector.h \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

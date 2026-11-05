@@ -43,7 +43,11 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "PBL2::@6890427a1f51a3e7e1df",
+<<<<<<<< HEAD:build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.cmake/api/v1/reply/codemodel-v2-c09ee48685677e49e310.json
 					"jsonFile" : "target-PBL2-Debug-5c5683a723d7fc0ebea1.json",
+========
+					"jsonFile" : "target-PBL2-Debug-45314b1772197672e043.json",
+>>>>>>>> 9a8c9805284d4e8efaa4fcfd441d1230d4cc0a35:build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug/.cmake/api/v1/reply/codemodel-v2-6128d6f21f3f221740ff.json
 					"name" : "PBL2",
 					"projectIndex" : 0
 				},
@@ -67,8 +71,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug",
-		"source" : "D:/PBL2"
+		"build" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug",
+		"source" : "C:/Users/PC/Downloads/webnew/PBL2_v1/PBL2"
 	},
 	"version" : 
 	{
